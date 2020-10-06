@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <title>Document</title>
 </head>
-
 <body>
-    <div>
-    <h1>{{$title}}</h1>
-    <p>{{$text}}</p>
+    <div id="app">
+    <calendar :title="'{{$title}}'" :saker="{{$saker}}"></calendar>
     </div>
-</body>
 
+</body>
 </html>

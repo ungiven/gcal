@@ -180,15 +180,19 @@ class MainController extends Controller
         array_push($r, $events[0]->summary);
 
 
-        return var_dump($events[0]);
+        //return var_dump($events[0]);
 
         $data = [
-            'title' => 'Title',
-            'text' => 'ASDF',
+            'title' => 'php Title',
+            'saker' => json_encode([
+                'name' => 'roligt event',
+                'start' => '10.00',
+                'end' => '11.00'
+            ]),
 
         ];
 
-        //return view('start')->with($data);
+        return view('start')->with($data);
     }
 
     public function add()
