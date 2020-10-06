@@ -20,7 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@start');
 
-Route::get('/post/{id}', 'MainController@update');
+Route::get('/add', 'MainController@add');
+
+Route::get('/update/{id}', 'MainController@update');
+
+Route::get('/auth', 'MainController@auth');
+
+Route::get('/auth/{id}', 'MainController@auth');
 
 /*Route::get('/post/{id}', function ($id) {
     return $id;
