@@ -175,16 +175,31 @@ class MainController extends Controller
             }
         }*/
 
-        $r = [];
-        array_push($r, $events[0]->summary);
-        array_push($r, $events[0]->summary);
+        $data = [];
+        $data['title'] = 'phpTitle';
+        $data['items'] = [];
+        foreach ($events as $event) {
+            $start = $event->start->dateTime;
+
+            array_push(
+                $data['items'],
+                [
+                    'name' => $event->getSummary(),
+                    'start' => empty($start) ? $event->start->date : $start,
+                    //'date' => $event->start->date,
+                    //'dateTime' => $event->start->datetime,
+                ]
+            );
+        }
+
+        $data['items'] = json_encode($data['items']);
 
 
         //return var_dump($events[0]);
 
-        $data = [
+        /*$data = [
             'title' => 'php Title',
-            'saker' => json_encode([
+            'items' => json_encode([
                 [
                     'name' => 'roligt event',
                     'start' => '10.00',
@@ -205,7 +220,7 @@ class MainController extends Controller
                 ]
             ]),
 
-        ];
+        ];*/
 
         return view('start')->with($data);
     }

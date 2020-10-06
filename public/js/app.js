@@ -1918,6 +1918,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /*var calendar = new Vue({
     el: "#calendar",
@@ -1926,7 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
     }
 });*/
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["title", "saker"]
+  props: ["title", "items"]
 });
 
 /***/ }),
@@ -1948,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["name", "start", "end"]
+  props: ["name", "start"]
 });
 
 /***/ }),
@@ -20272,11 +20276,13 @@ var render = function() {
     { staticClass: "axb" },
     [
       _c("h1", [_vm._v("Calendar")]),
-      _vm._v("\n  " + _vm._s(_vm.title) + "\n\n      "),
-      _vm._l(_vm.saker, function(sak) {
+      _vm._v(" "),
+      _c("h2", [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _vm._l(_vm.items, function(item) {
         return _c("calendar-item", {
-          key: sak.id,
-          attrs: { name: sak.name, start: sak.start, end: sak.end }
+          key: item.id,
+          attrs: { name: item.name, start: item.start }
         })
       })
     ],
@@ -20307,7 +20313,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "calendar-item" }, [
     _c("h3", [_vm._v(_vm._s(_vm.name))]),
-    _vm._v("\n  " + _vm._s(_vm.start) + "-" + _vm._s(_vm.end) + "\n")
+    _vm._v("\n  " + _vm._s(_vm.start) + "\n")
   ])
 }
 var staticRenderFns = []

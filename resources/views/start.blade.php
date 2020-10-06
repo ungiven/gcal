@@ -9,10 +9,9 @@
 </head>
 <body>
     <div id="app">
-    <calendar :title="'{{$title}}'" :saker="{{$saker}}"></calendar>
+    <calendar :title="'{{$title}}'" :items="{{$items}}"></calendar>
     </div>
 
-    {{$saker}}
-
+<pre>{{var_dump($items)}}</pre>
 </body>
 </html>

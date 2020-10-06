@@ -1,10 +1,14 @@
 <template>
   <div class="axb">
     <h1>Calendar</h1>
-    {{ title }}
+    <h2>{{ title }}</h2>
 
-        <calendar-item v-for="sak in saker" :key="sak.id" :name="sak.name" :start="sak.start" :end="sak.end"></calendar-item>
-    </div>
+    <calendar-item
+      v-for="item in items"
+      :key="item.id"
+      :name="item.name"
+      :start="item.start"
+    ></calendar-item>
   </div>
 </template>
 
@@ -17,6 +21,6 @@
 });*/
 
 export default {
-  props: ["title", "saker"],
+  props: ["title", "items"],
 };
 </script>

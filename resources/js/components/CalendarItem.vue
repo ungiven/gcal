@@ -1,13 +1,13 @@
 <template>
   <div class="calendar-item">
     <h3>{{ name }}</h3>
-    {{ start }}-{{ end }}
+    {{ start }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ["name", "start", "end"],
+  props: ["name", "start"],
 };
 </script>
 
