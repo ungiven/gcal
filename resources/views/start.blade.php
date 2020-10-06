@@ -12,5 +12,7 @@
     <calendar :title="'{{$title}}'" :saker="{{$saker}}"></calendar>
     </div>
 
+    {{$saker}}
+
 </body>
 </html>

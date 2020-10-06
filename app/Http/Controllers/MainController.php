@@ -185,9 +185,24 @@ class MainController extends Controller
         $data = [
             'title' => 'php Title',
             'saker' => json_encode([
-                'name' => 'roligt event',
-                'start' => '10.00',
-                'end' => '11.00'
+                [
+                    'name' => 'roligt event',
+                    'start' => '10.00',
+                    'end' => '11.00',
+                    'id' => 0
+                ],
+                [
+                    'name' => 'roligt event',
+                    'start' => '10.00',
+                    'end' => '11.00',
+                    'id' => 1
+                ],
+                [
+                    'name' => 'roligt event',
+                    'start' => '10.00',
+                    'end' => '11.00',
+                    'id' => 2
+                ]
             ]),
 
         ];
