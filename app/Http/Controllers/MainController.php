@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //vendor\google\apiclient\src\Google;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 
 //require base_path() . '/vendor/autoload.php';
@@ -98,14 +99,16 @@ class MainController extends Controller
     private $calendar;
     private $client;
 
-    function __construct()
+    public function __construct(Redirector $redirect)
     {
         $client = new \Google_Client();
-        $client->setApplicationName('Google Calendar API PHP Quickstart');
-        $client->setScopes(\Google_Service_Calendar::CALENDAR_READONLY);
+        $client->setApplicationName('Google Calendar API PHP');
+        $client->setScopes(\Google_Service_Calendar::CALENDAR);
         $client->setAuthConfig(base_path() . '/credentials.json');
         $client->setAccessType('offline');
         $client->setPrompt('select_account consent');
+
+        $this->client = $client;
 
         // Load previously authorized token from a file, if it exists.
         // The file token.json stores the user's access and refresh tokens, and is
@@ -114,26 +117,33 @@ class MainController extends Controller
         $tokenPath = base_path() . '/token.json';
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
-            $client->setAccessToken($accessToken);
+            $this->client->setAccessToken($accessToken);
         }
 
         // If there is no previous token or it's expired.
-        if ($client->isAccessTokenExpired()) {
+        if ($this->client->isAccessTokenExpired()) {
             // Refresh the token if possible, else fetch a new one.
-            if ($client->getRefreshToken()) {
-                $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+            if ($this->client->getRefreshToken()) {
+                $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
             } else {
                 // Request authorization from the user.
-                $authUrl = $client->createAuthUrl();
-                printf("%s", $authUrl);
+                $authUrl = $this->client->createAuthUrl();
+                //printf("%s", $authUrl);
                 //print 'Enter verification code: ';
                 //$authCode = trim(fgets(STDIN));
 
-                $authCode = "4/4wFrJqmnopd-E1alaB7autLJbE8ItEJBBe9bfLvCHaipZ7L3CZ1vwJk";
+                //print($authUrl);
+
+
+
+                //return redirect()->view('auth');
+
+
+                $authCode = "4/5AH-EDK4QbmqAfmr3FohQCut2ENxkSMxT8XtRTsU-CZivXRtPkgH5JE";
 
                 // Exchange authorization code for an access token.
-                $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
-                $client->setAccessToken($accessToken);
+                $accessToken = $this->client->fetchAccessTokenWithAuthCode($authCode);
+                $this->client->setAccessToken($accessToken);
 
                 // Check to see if there was an error.
                 if (array_key_exists('error', $accessToken)) {
@@ -147,7 +157,7 @@ class MainController extends Controller
             file_put_contents($tokenPath, json_encode($client->getAccessToken()));
         }
 
-        $this->calendar = new \Google_Service_Calendar($client);
+        $this->calendar = new \Google_Service_Calendar($this->client);
     }
 
 
@@ -228,6 +238,25 @@ class MainController extends Controller
 
     public function add()
     {
+
+        $calendarId = 'primary';
+        $event = new \Google_Service_Calendar_Event(array(
+            'summary' => 'Another inserted event',
+            'start' => array(
+                'dateTime' => '2020-10-08T12:00:00+02:00',
+            ),
+            'end' => array(
+                'dateTime' => '2020-10-08T16:00:00+02:00',
+            )
+        ));
+
+
+
+
+        $event = $this->calendar->events->insert($calendarId, $event);
+        printf('Event created: %s\n', $event->htmlLink);
+
+
         return 'Add to IT';
     }
 
@@ -241,7 +270,14 @@ class MainController extends Controller
         if ($id) {
             return 'Auth id: ' . $id;
         } else {
-            return view('auth');
+            $data = [];
+            $data['authUrl'] = $this->client->createAuthUrl();
+            return view('auth')->with($data);
         }
+    }
+
+    private function asdf()
+    {
+        return 'hej';
     }
 }

@@ -30,6 +30,7 @@
     </style>
 </head>
 <body>
+<h1>{{$authUrl}}</h1>
     <div id="main">
         <button>Get auth key!</button>
         <input type="text" name="authkey" id="authkey" placeholder="Enter auth key here">

@@ -22,6 +22,8 @@ Route::get('/', 'MainController@start');
 
 Route::get('/add', 'MainController@add');
 
+Route::post('/add', 'MainController@add');
+
 Route::get('/update/{id}', 'MainController@update');
 
 Route::get('/auth', 'MainController@auth');

@@ -9,6 +9,8 @@ Vue.component(
     require("./components/CalendarItem.vue").default
 );
 
+Vue.component("calendar-form", require("./components/Form.vue").default);
+
 const app = new Vue({
     el: "#app"
 });

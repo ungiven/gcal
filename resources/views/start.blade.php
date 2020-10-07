@@ -10,6 +10,7 @@
 <body>
     <div id="app">
     <calendar :title="'{{$title}}'" :items="{{$items}}"></calendar>
+    <calendar-form></calendar-form>
     </div>
 
 <pre>{{var_dump($items)}}</pre>
