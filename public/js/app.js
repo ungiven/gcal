@@ -20365,7 +20365,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "calendar-item" }, [
-    _c("h3", [_vm._v(_vm._s(_vm.name))]),
+    _c("h3", [
+      _c("input", { attrs: { type: "radio" } }),
+      _vm._v(_vm._s(_vm.name))
+    ]),
     _vm._v("\n  " + _vm._s(_vm.start) + "\n")
   ])
 }
@@ -20407,7 +20410,7 @@ var staticRenderFns = [
         _c("input", { attrs: { type: "time", name: "time", id: "b" } }),
         _vm._v(" "),
         _c("input", {
-          attrs: { type: "text", name: "event", placeholder: "Event name" }
+          attrs: { type: "text", name: "name", placeholder: "Event name" }
         }),
         _vm._v(" "),
         _c("input", {

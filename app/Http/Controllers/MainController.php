@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 //vendor\google\apiclient\src\Google;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 
 
 //require base_path() . '/vendor/autoload.php';
@@ -99,7 +98,7 @@ class MainController extends Controller
     private $calendar;
     private $client;
 
-    public function __construct(Redirector $redirect)
+    public function __construct()
     {
         $client = new \Google_Client();
         $client->setApplicationName('Google Calendar API PHP');
@@ -165,7 +164,7 @@ class MainController extends Controller
     {
         $calendarId = 'primary';
         $optParams = array(
-            'maxResults' => 10,
+            'maxResults' => 5,
             'orderBy' => 'startTime',
             'singleEvents' => true,
             'timeMin' => date('c'),
@@ -232,32 +231,49 @@ class MainController extends Controller
             ]),
 
         ];*/
-
+        var_dump($events[0]);
         return view('start')->with($data);
     }
 
-    public function add()
+    public function add(Request $request)
     {
+        # POST data
+        $data = array(
+            'name' => $request->input('name'),
+            'date' => $request->input('date'),
+            'time' => $request->input('time'),
+        );
 
+        # Create datetime object fro POST data
+        $start = new \DateTime($data['date'] . " " . $data['time'], new \DateTimeZone('Europe/Stockholm'));
+
+        # Create calendar event object from POST data
         $calendarId = 'primary';
         $event = new \Google_Service_Calendar_Event(array(
-            'summary' => 'Another inserted event',
+            'summary' => $data['name'],
             'start' => array(
-                'dateTime' => '2020-10-08T12:00:00+02:00',
+                'dateTime' => $start->format(\DateTimeInterface::RFC3339),
             ),
             'end' => array(
-                'dateTime' => '2020-10-08T16:00:00+02:00',
+                'dateTime' => $start->modify('+2 hours')->format(\DateTimeInterface::RFC3339),
             )
         ));
 
-
-
-
+        # Insert event into calendar
         $event = $this->calendar->events->insert($calendarId, $event);
         printf('Event created: %s\n', $event->htmlLink);
 
 
         return 'Add to IT';
+
+
+
+        //$dateTime->setTimezone(new \DateTimeZone('Europe/Stockholm'));
+        //var_dump($dateTime);
+
+
+
+        var_dump($data);
     }
 
     public function update($id)
@@ -274,10 +290,5 @@ class MainController extends Controller
             $data['authUrl'] = $this->client->createAuthUrl();
             return view('auth')->with($data);
         }
-    }
-
-    private function asdf()
-    {
-        return 'hej';
     }
 }

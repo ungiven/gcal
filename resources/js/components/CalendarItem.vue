@@ -1,6 +1,6 @@
 <template>
   <div class="calendar-item">
-    <h3>{{ name }}</h3>
+    <h3><input type="radio" />{{ name }}</h3>
     {{ start }}
   </div>
 </template>
