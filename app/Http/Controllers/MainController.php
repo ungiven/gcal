@@ -196,6 +196,8 @@ class MainController extends Controller
                 [
                     'name' => $event->getSummary(),
                     'start' => empty($start) ? $event->start->date : $start,
+                    //'id' => $event->getId(),
+                    'id' => $event->id,
                     //'date' => $event->start->date,
                     //'dateTime' => $event->start->datetime,
                 ]
@@ -232,6 +234,8 @@ class MainController extends Controller
 
         ];*/
         var_dump($events[0]);
+        //var_dump(get_class_methods($this->calendar->events));
+        //print($this->calendar->events->get($calendarId,));
         return view('start')->with($data);
     }
 
@@ -290,5 +294,9 @@ class MainController extends Controller
             $data['authUrl'] = $this->client->createAuthUrl();
             return view('auth')->with($data);
         }
+    }
+
+    public function item($id = Null)
+    {
     }
 }
