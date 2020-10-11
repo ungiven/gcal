@@ -125,6 +125,9 @@ class MainController extends Controller
             if ($this->client->getRefreshToken()) {
                 $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
             } else {
+
+                ### Redirect to auth page
+
                 // Request authorization from the user.
                 $authUrl = $this->client->createAuthUrl();
                 //printf("%s", $authUrl);
@@ -135,7 +138,7 @@ class MainController extends Controller
 
 
 
-                //return redirect()->view('auth');
+
 
 
                 $authCode = "4/5AH-EDK4QbmqAfmr3FohQCut2ENxkSMxT8XtRTsU-CZivXRtPkgH5JE";
