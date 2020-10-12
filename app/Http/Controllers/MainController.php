@@ -113,6 +113,7 @@ class MainController extends Controller
         // The file token.json stores the user's access and refresh tokens, and is
         // created automatically when the authorization flow completes for the first
         // time.
+
         $tokenPath = base_path() . '/token.json';
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
@@ -125,33 +126,38 @@ class MainController extends Controller
             if ($this->client->getRefreshToken()) {
                 $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
             } else {
-
-                ### Redirect to auth page
-
-                // Request authorization from the user.
                 $authUrl = $this->client->createAuthUrl();
-                //printf("%s", $authUrl);
-                //print 'Enter verification code: ';
-                //$authCode = trim(fgets(STDIN));
-
-                //print($authUrl);
-
-
-
-
-
-
-                $authCode = "4/5AH-EDK4QbmqAfmr3FohQCut2ENxkSMxT8XtRTsU-CZivXRtPkgH5JE";
-
-                // Exchange authorization code for an access token.
-                $accessToken = $this->client->fetchAccessTokenWithAuthCode($authCode);
-                $this->client->setAccessToken($accessToken);
-
-                // Check to see if there was an error.
-                if (array_key_exists('error', $accessToken)) {
-                    throw new \Exception(join(', ', $accessToken));
-                }
+                return view('/auth')->with('authUrl', $authUrl);
             }
+            //} else {
+
+
+            ### Redirect to auth page
+
+            // Request authorization from the user.
+            //$authUrl = $this->client->createAuthUrl();
+            //printf("%s", $authUrl);
+            //print 'Enter verification code: ';
+            //$authCode = trim(fgets(STDIN));
+
+            //print($authUrl);
+
+
+
+
+
+
+            //$authCode = "4/5AH-EDK4QbmqAfmr3FohQCut2ENxkSMxT8XtRTsU-CZivXRtPkgH5JE";
+
+            // Exchange authorization code for an access token.
+            //$accessToken = $this->client->fetchAccessTokenWithAuthCode($authCode);
+            //$this->client->setAccessToken($accessToken);
+
+            // Check to see if there was an error.
+            /*if (array_key_exists('error', $accessToken)) {
+                    throw new \Exception(join(', ', $accessToken));
+                }*/
+            //}
             // Save the token to a file.
             if (!file_exists(dirname($tokenPath))) {
                 mkdir(dirname($tokenPath), 0700, true);
@@ -165,6 +171,7 @@ class MainController extends Controller
 
     public function start()
     {
+        //$this->calendar = new \Google_Service_Calendar($this->client);
         $calendarId = 'primary';
         $optParams = array(
             'maxResults' => 5,
@@ -251,6 +258,10 @@ class MainController extends Controller
             'time' => $request->input('time'),
         );
 
+        if (!($data['name'] && $data['date'] && $data['time'])) {
+            return "Enter event name, date and time.";
+        }
+
         # Create datetime object fro POST data
         $start = new \DateTime($data['date'] . " " . $data['time'], new \DateTimeZone('Europe/Stockholm'));
 
@@ -268,38 +279,79 @@ class MainController extends Controller
 
         # Insert event into calendar
         $event = $this->calendar->events->insert($calendarId, $event);
-        printf('Event created: %s\n', $event->htmlLink);
+        printf('Event created: %s<br>', $event->htmlLink);
+
+        var_dump($data);
 
 
-        return 'Add to IT';
+        return '<br>Add to IT';
 
 
 
         //$dateTime->setTimezone(new \DateTimeZone('Europe/Stockholm'));
         //var_dump($dateTime);
 
-
-
-        var_dump($data);
     }
 
     public function update($id)
     {
-        return 'Updated id: ' . $id;
+        if ($id) {
+            $calendarId = 'primary';
+            $optParams = array(
+                'id' => $id,
+            );
+
+
+
+            //$results = $this->calendar->events->listEvents($calendarId, $optParams);
+
+            //var_dump($results);
+
+            //var_dump(get_class_methods($this->calendar->events));
+
+
+            var_dump($event = $this->calendar->events->get($calendarId, $id, array()));
+        } else {
+            return 'No id';
+        }
+
+
+
+        //return 'Updated id: ' . $id;
     }
 
-    public function auth($id = Null)
+    public function auth(Request $request)
     {
-        if ($id) {
+        /*if ($id) {
             return 'Auth id: ' . $id;
         } else {
             $data = [];
             $data['authUrl'] = $this->client->createAuthUrl();
             return view('auth')->with($data);
-        }
-    }
+        }*/
 
-    public function item($id = Null)
-    {
+        if (!empty($request->input('authCode'))) {
+            $authCode = $request->input('authCode');
+            print $authCode;
+            $accessToken = $this->client->fetchAccessTokenWithAuthCode($authCode);
+
+            $this->client->setAccessToken($accessToken);
+
+
+            $tokenPath = base_path() . '/token.json';
+
+            if (array_key_exists('error', $accessToken)) {
+                throw new \Exception(join(', ', $accessToken));
+            }
+
+            if (!file_exists(dirname($tokenPath))) {
+                mkdir(dirname($tokenPath), 0700, true);
+            }
+            file_put_contents($tokenPath, json_encode($this->client->getAccessToken()));
+        } else {
+
+            $authUrl = $this->client->createAuthUrl();
+            return view('auth')->with('authUrl', $authUrl);
+        }
     }
 }

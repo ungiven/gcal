@@ -1978,6 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1994,7 +1995,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.calendar-item[data-v-6d9c6edc] {\r\n  background-color: #ddd;\r\n  margin-bottom: 10px;\n}\r\n", ""]);
+exports.push([module.i, "\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  background-color: rgb(163, 145, 243);\r\n  margin-bottom: 10px;\r\n  border: 1px solid rgb(206, 111, 250);\r\n  border-radius: 10px;\r\n  padding-left: 5px;\n}\r\n", ""]);
 
 // exports
 
@@ -20365,11 +20366,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "calendar-item" }, [
-    _c("h3", [
-      _c("input", { attrs: { type: "radio" } }),
-      _vm._v(_vm._s(_vm.name))
-    ]),
-    _vm._v("\n  " + _vm._s(_vm.start) + "\n")
+    _c("h3", [_vm._v(_vm._s(_vm.name)), _c("button", [_vm._v("E")])]),
+    _vm._v("\n  " + _vm._s(_vm.start) + " ()\n")
   ])
 }
 var staticRenderFns = []
@@ -20408,6 +20406,8 @@ var staticRenderFns = [
         _c("input", { attrs: { type: "date", name: "date", id: "a" } }),
         _vm._v(" "),
         _c("input", { attrs: { type: "time", name: "time", id: "b" } }),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "time", name: "end", id: "" } }),
         _vm._v(" "),
         _c("input", {
           attrs: { type: "text", name: "name", placeholder: "Event name" }

@@ -7,10 +7,19 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <title>Document</title>
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        
         #app {
             width: 30vw;
             margin: 0 auto 0 auto;
         }
+
+        h3 {
+            font-family: 'Raleway';
+            font-weight: 100;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -22,9 +31,11 @@
         <h2>Form goes here</h2>
         <form action="/add" method="POST">
             @csrf
-            <input type="date" name="date" id="a" />
-            <input type="time" name="time" id="b" />
-            <input type="text" name="name" placeholder="Event name" />
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" />
+            <input type="time" name="time" id="time" />
+            <input type="time" name="end" id="end" />
+            <input type="text" name="name" id ="name" placeholder="Event name" />
             <input type="submit" id="submiButton" value="Add event" />
         </form>
     </div>

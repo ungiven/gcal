@@ -32,9 +32,11 @@
 <body>
 <h1>{{$authUrl}}</h1>
     <div id="main">
+        <form>
         <button>Get auth key!</button>
-        <input type="text" name="authkey" id="authkey" placeholder="Enter auth key here">
-        <button>Authenticate</button>
+        <input type="text" name="authCode" id="authkey" placeholder="Enter auth key here">
+        <input type="submit" />
+        </form>
     </div>
 </body>
 </html>

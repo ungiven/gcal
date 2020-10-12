@@ -18,19 +18,19 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 
-Route::get('/', 'MainController@start');
+Route::get('/', 'MainController@start')->middleware('googleauth');
 
-Route::get('/add', 'MainController@add');
+//Route::get('/add', 'MainController@add');
 
-Route::post('/add', 'MainController@add');
+Route::post('/add', 'MainController@add')->middleware('googleauth');
 
-Route::get('/update/{id}', 'MainController@update');
-
-Route::get('/item/{id}', 'MainController@item');
+Route::get('/update/{id}', 'MainController@update')->middleware('googleauth');
 
 Route::get('/auth', 'MainController@auth');
 
-Route::get('/auth/{id}', 'MainController@auth');
+//Route::get('/auth/{id}', 'MainController@auth');
+Route::post('/auth', 'MainController@auth');
+
 
 /*Route::get('/post/{id}', function ($id) {
     return $id;

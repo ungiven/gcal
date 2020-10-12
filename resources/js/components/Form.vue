@@ -4,6 +4,7 @@
     <form action="/add" method="post">
       <input type="date" name="date" id="a" />
       <input type="time" name="time" id="b" />
+      <input type="time" name="end" id="" />
       <input type="text" name="name" placeholder="Event name" />
       <input type="submit" id="submiButton" value="Add event" />
     </form>
