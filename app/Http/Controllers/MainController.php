@@ -243,7 +243,7 @@ class MainController extends Controller
             ]),
 
         ];*/
-        var_dump($events[0]);
+        //var_dump($events[0]);
         //var_dump(get_class_methods($this->calendar->events));
         //print($this->calendar->events->get($calendarId,));
         return view('start')->with($data);

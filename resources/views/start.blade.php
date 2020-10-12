@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         <div id="main">
-    <calendar :title="'{{$title}}'" :items="{{$items}}"></calendar>
+        <calendar :title="'{{$title}}'" :items="{{$items}}" :csrf="'{{csrf_token()}}'"></calendar>
     </div>
     <div id="form">
         <h2>Form goes here</h2>

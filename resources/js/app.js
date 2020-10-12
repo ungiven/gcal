@@ -10,6 +10,7 @@ Vue.component(
 );
 
 Vue.component("calendar-form", require("./components/Form.vue").default);
+Vue.component("test-component", require("./components/Test.vue").default);
 
 const app = new Vue({
     el: "#app"

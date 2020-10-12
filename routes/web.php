@@ -24,12 +24,16 @@ Route::get('/', 'MainController@start')->middleware('googleauth');
 
 Route::post('/add', 'MainController@add')->middleware('googleauth');
 
-Route::get('/update/{id}', 'MainController@update')->middleware('googleauth');
+Route::post('/update/{id}', 'MainController@update')->middleware('googleauth');
 
 Route::get('/auth', 'MainController@auth');
 
 //Route::get('/auth/{id}', 'MainController@auth');
 Route::post('/auth', 'MainController@auth');
+
+Route::get('/test', function () {
+    return view('test');
+});
 
 
 /*Route::get('/post/{id}', function ($id) {
