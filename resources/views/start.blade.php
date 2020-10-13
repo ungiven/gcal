@@ -8,30 +8,52 @@
     <title>Document</title>
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         
-        #app {
+        #main {
             width: 30vw;
             margin: 0 auto 0 auto;
         }
 
-        h3 {
+        h1, h2 {
             font-family: 'Raleway';
-            font-weight: 100;
+        }
+    
+        h2 {
+            border-bottom: 1px solid #bbb;
+        }
+
+        h3 {
+            font-family: 'Open Sans';
+            font-size: 16px;
+            text-transform: capitalize;
+
+        }
+
+        h1 {
+            border-bottom: 2px solid #bbb;
+            padding-bottom: 5px;
+        }
+
+        p.time {
+            font-family: 'Open Sans', 'Tahoma', 'sans-serif';
+            font-size: 11px;
         }
 
         
     </style>
 </head>
 <body>
-    <div id="app">
-        <div id="main">
-        <calendar :title="'{{$title}}'" :items="{{$items}}" :csrf="'{{csrf_token()}}'"></calendar>
-    </div>
+    <div><h1>Calendar</h1></div>
+    <div id="main">
+        <div id="app">
+
+            <calendar :title="'{{$title}}'" :items="{{$items}}" :csrf="'{{csrf_token()}}'"></calendar>
+        </div>
     <div id="form">
-        <h2>Form goes here</h2>
+        <h2>Add new event</h2>
         <form action="/add" method="POST">
             @csrf
-            <label for="date">Date</label>
             <input type="date" name="date" id="date" />
             <input type="time" name="time" id="time" />
             <input type="time" name="end" id="end" />
@@ -41,6 +63,5 @@
     </div>
     </div>
 
-<pre>{{var_dump($items)}}</pre>
 </body>
 </html>

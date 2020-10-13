@@ -200,6 +200,7 @@ class MainController extends Controller
         $data['items'] = [];
         foreach ($events as $event) {
             $start = $event->start->dateTime;
+            $end = $event->start->dateTime;
 
             array_push(
                 $data['items'],
@@ -208,6 +209,7 @@ class MainController extends Controller
                     'start' => empty($start) ? $event->start->date : $start,
                     //'id' => $event->getId(),
                     'id' => $event->id,
+                    'end' => empty($end) ? $event->end->date : $start,
                     //'date' => $event->start->date,
                     //'dateTime' => $event->start->datetime,
                 ]
@@ -243,7 +245,7 @@ class MainController extends Controller
             ]),
 
         ];*/
-        //var_dump($events[0]);
+        var_dump($events[0]);
         //var_dump(get_class_methods($this->calendar->events));
         //print($this->calendar->events->get($calendarId,));
         return view('start')->with($data);

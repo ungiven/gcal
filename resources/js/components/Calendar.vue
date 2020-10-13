@@ -1,14 +1,13 @@
 <template>
   <div class="axb">
-    <h1>Calendar</h1>
-    <h2>{{ title }}</h2>
-    {{ csrf }}
+    <h2>Events</h2>
 
     <calendar-item
       v-for="item in items"
       :key="item.id"
       :name="item.name"
       :start="item.start"
+      :end="item.end"
       :itemId="item.id"
       :csrf="csrf"
     ></calendar-item>
@@ -27,3 +26,7 @@ export default {
   props: ["title", "items", "csrf"],
 };
 </script>
+
+<style scoped>
+
+</style>
