@@ -1,7 +1,6 @@
 <template>
   <div class="axb">
     <h2>Events</h2>
-
     <calendar-item
       v-for="item in items"
       :key="item.id"
@@ -28,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+h2 {
+  margin-top: 0;
+}
 </style>

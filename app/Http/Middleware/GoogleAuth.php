@@ -33,7 +33,7 @@ class GoogleAuth
             $this->client->setAccessToken($accessToken);
         } else {
             $authUrl = $this->client->createAuthUrl();
-            print('A');
+            #print('A');
             return redirect('/auth')->with('authUrl', $authUrl);
         }
 
@@ -43,7 +43,7 @@ class GoogleAuth
                 $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
             } else {
                 $authUrl = $this->client->createAuthUrl();
-                print('B');
+                #print('B');
                 return redirect('/auth')->with('authUrl', $authUrl);
             }
         }

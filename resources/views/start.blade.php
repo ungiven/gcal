@@ -11,22 +11,35 @@
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
         
         #main {
-            width: 30vw;
-            margin: 0 auto 0 auto;
+            /*width: 30vw;
+            margin: 0 auto 0 auto;*/
+            display: grid;
+            grid-template-columns: 30% auto 30%;
+            grid-gap: 10px;
+            margin-bottom: 200px;
         }
 
         h1, h2 {
             font-family: 'Raleway';
         }
+
+        h1 {
+            margin-bottom: 40px;
+        }
     
         h2 {
             border-bottom: 1px solid #bbb;
+            background-color: rgb(32, 129, 255);
+            color: white;
+            padding: 2px 0 2px 5px;
+            margin: 0;
         }
 
         h3 {
             font-family: 'Open Sans';
             font-size: 16px;
             text-transform: capitalize;
+            font-weight: normal;
 
         }
 
@@ -40,27 +53,93 @@
             font-size: 11px;
         }
 
+        label {
+            font-family: 'Calibri', 'sans-serif';
+            text-transform: uppercase;
+            font-size: 10px;
+            display: block;
+            color:rgb(32, 129, 255);
+        }
+
+        .form-item input {
+            display: block;
+            font-family: 'Open sans';
+        }
+
+
+        .new-event-form {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-teimplate-rows: auto auto;
+        }
+
+        #message {
+            color: green;
+            font-family: 'open sans', 'sans-serif';
+
+        }
+
+        #message h2 {
+            background-color: white;
+            color: rgb(87, 156, 87);
+        }
+
+        #content h2 {
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: rgb(255, 109, 83)!important;
+
+        }
+
         
     </style>
 </head>
 <body>
-    <div><h1>Calendar</h1></div>
+    <div><h1>Google Calendar API</h1></div>
+
     <div id="main">
+        <div id="message" @if($error) class="error" @endif>
+            @if($message)
+                @if($error)<h2 class="error">Error</h2>
+                @else <h2 class="success">Success</h2>
+                @endif
+            <p class="message">{{$message}}</p>
+            @endif
+        </div>
+        <div id="content">
         <div id="app">
 
             <calendar :title="'{{$title}}'" :items="{{$items}}" :csrf="'{{csrf_token()}}'"></calendar>
         </div>
     <div id="form">
-        <h2>Add new event</h2>
-        <form action="/add" method="POST">
+        <h2>New event</h2>
+        <form action="/add" method="POST" class="new-event-form">
             @csrf
-            <input type="date" name="date" id="date" />
-            <input type="time" name="time" id="time" />
-            <input type="time" name="end" id="end" />
-            <input type="text" name="name" id ="name" placeholder="Event name" />
-            <input type="submit" id="submiButton" value="Add event" />
+            
+            <div class="form-item">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date" required/>
+            </div>
+            <div class="form-item">
+                <label for="time">Start</label>
+                <input type="time" name="time" id="time" value="00:00" required/>
+            </div>
+             <div class="form-item">
+                <label for="end">End</label>
+                <input type="time" name="end" id="end" value="00:00" required/>
+            </div>
+
+            <div class="form-item">
+                <label for="name">Event Name</label>
+                <input type="text" name="name" id ="name" placeholder="Event name" required/>
+            </div>
+            <input type="submit" id="submitButton" value="Add event" />
         </form>
     </div>
+</div>
+    <div id="rest"><div>
     </div>
 
 </body>

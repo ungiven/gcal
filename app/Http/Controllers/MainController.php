@@ -97,6 +97,7 @@ class MainController extends Controller
 {
     private $calendar;
     private $client;
+    private $message;
 
     public function __construct()
     {
@@ -165,6 +166,8 @@ class MainController extends Controller
             file_put_contents($tokenPath, json_encode($client->getAccessToken()));
         }
 
+        $this->message = ['error' => false, 'message' => NULL];
+
         $this->calendar = new \Google_Service_Calendar($this->client);
     }
 
@@ -174,10 +177,11 @@ class MainController extends Controller
         //$this->calendar = new \Google_Service_Calendar($this->client);
         $calendarId = 'primary';
         $optParams = array(
-            'maxResults' => 5,
+            'maxResults' => 10,
             'orderBy' => 'startTime',
             'singleEvents' => true,
             'timeMin' => date('c'),
+            'timeMax' => date('c', time() + (7 * 24 * 60 * 60)),
         );
         $results = $this->calendar->events->listEvents($calendarId, $optParams);
         $events = $results->getItems();
@@ -195,28 +199,28 @@ class MainController extends Controller
             }
         }*/
 
-        $data = [];
-        $data['title'] = 'phpTitle';
-        $data['items'] = [];
+        # Create events json object for blade / vue / view and and pass it
+        $this->message['title'] = 'a';
+        $this->message['items'] = [];
         foreach ($events as $event) {
             $start = $event->start->dateTime;
-            $end = $event->start->dateTime;
+            $end = $event->end->dateTime;
 
             array_push(
-                $data['items'],
+                $this->message['items'],
                 [
                     'name' => $event->getSummary(),
                     'start' => empty($start) ? $event->start->date : $start,
                     //'id' => $event->getId(),
                     'id' => $event->id,
-                    'end' => empty($end) ? $event->end->date : $start,
+                    'end' => empty($end) ? $event->end->date : $end,
                     //'date' => $event->start->date,
                     //'dateTime' => $event->start->datetime,
                 ]
             );
         }
 
-        $data['items'] = json_encode($data['items']);
+        $this->message['items'] = json_encode($this->message['items']);
 
 
         //return var_dump($events[0]);
@@ -245,10 +249,10 @@ class MainController extends Controller
             ]),
 
         ];*/
-        var_dump($events[0]);
+        //var_dump($events[0]);
         //var_dump(get_class_methods($this->calendar->events));
         //print($this->calendar->events->get($calendarId,));
-        return view('start')->with($data);
+        return view('start')->with($this->message);
     }
 
     public function add(Request $request)
@@ -258,14 +262,16 @@ class MainController extends Controller
             'name' => $request->input('name'),
             'date' => $request->input('date'),
             'time' => $request->input('time'),
+            'end' => $request->input('end'),
         );
 
-        if (!($data['name'] && $data['date'] && $data['time'])) {
+        if (!($data['name'] && $data['date'] && $data['time'] && $data['end'])) {
             return "Enter event name, date and time.";
         }
 
         # Create datetime object fro POST data
         $start = new \DateTime($data['date'] . " " . $data['time'], new \DateTimeZone('Europe/Stockholm'));
+        $end = new \DateTime($data['date'] . " " . $data['end'], new \DateTimeZone('Europe/Stockholm'));
 
         # Create calendar event object from POST data
         $calendarId = 'primary';
@@ -275,18 +281,23 @@ class MainController extends Controller
                 'dateTime' => $start->format(\DateTimeInterface::RFC3339),
             ),
             'end' => array(
-                'dateTime' => $start->modify('+2 hours')->format(\DateTimeInterface::RFC3339),
+                //'dateTime' => $start->modify('+2 hours')->format(\DateTimeInterface::RFC3339),
+                'dateTime' => $end->format(\DateTimeInterface::RFC3339),
             )
         ));
 
         # Insert event into calendar
         $event = $this->calendar->events->insert($calendarId, $event);
-        printf('Event created: %s<br>', $event->htmlLink);
+        $this->message['message'] = "Event '" . $data['name'] . "' created successfully.";
+        return $this->start();
 
-        var_dump($data);
+        //printf('Event created: %s<br>', $event->htmlLink);
 
 
-        return '<br>Add to IT';
+        //var_dump($data);
+
+
+        //return '<br>Add to IT';
 
 
 
@@ -295,13 +306,66 @@ class MainController extends Controller
 
     }
 
-    public function update($id)
+    public function update($id, Request $request)
     {
         if ($id) {
             $calendarId = 'primary';
             $optParams = array(
                 'id' => $id,
             );
+
+
+
+            $pName = $request->input('name');
+            $pDate = $request->input('date');
+            $pStart = $request->input('start');
+            $pEnd = $request->input('end');
+
+            $event = $this->calendar->events->get($calendarId, $id, array());
+            $start = $event->start->dateTime;
+            $end = $event->end->dateTime;
+
+            $eventName = $event->getSummary();
+            $eventStart = empty($start) ? $event->start->date : $start;
+            $eventEnd = empty($end) ? $event->end->date : $end;
+
+            /*print($eventStart);
+            print('<br>');*/
+
+            $pStartFormat = new \DateTime($pDate . " " . $pStart . '+02:00', new \DateTimeZone('Europe/Stockholm'));
+            $pEndFormat = new \DateTime($pDate . " " . $pEnd . '+02:00', new \DateTimeZone('Europe/Stockholm'));
+
+            if (
+                $eventStart == $pStartFormat->format(\DateTimeInterface::RFC3339) &&
+                $eventEnd == $pEndFormat->format(\DateTimeInterface::RFC3339) &&
+                $eventName == $pName
+            ) {
+                $this->message['error'] = true;
+                $this->message['message'] = "Identical post, '" . $eventName . "' was not updated.";
+                return $this->start();
+                //print('identical event');
+            } else {
+                $this->message['message'] = "Event '" . $eventName . "' updated successfully.";
+                return $this->start();
+            }
+
+
+            //print($pStartFormat->format(\DateTimeInterface::RFC3339));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -312,7 +376,8 @@ class MainController extends Controller
             //var_dump(get_class_methods($this->calendar->events));
 
 
-            var_dump($event = $this->calendar->events->get($calendarId, $id, array()));
+
+            //var_dump($event);
         } else {
             return 'No id';
         }
