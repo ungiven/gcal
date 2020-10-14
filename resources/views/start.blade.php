@@ -108,12 +108,12 @@
     <div><h1>Google Calendar API</h1></div>
 
     <div id="main">
-        <div id="message" @if($error) class="error" @endif>
-            @if($message)
-                @if($error)<h2 class="error">Error</h2>
+        <div id="message" @if(session('shared_error')) class="error" @endif>
+            @if(session('shared_message'))
+                @if(session('shared_error'))<h2 class="error">Error</h2>
                 @else <h2 class="success">Success</h2>
                 @endif
-            <p class="message">{{$message}}</p>
+            <p class="message">{{session('shared_message')}}</p>
             @endif
         </div>
         <div id="content">

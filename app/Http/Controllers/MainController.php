@@ -136,13 +136,21 @@ class MainController extends Controller
         try {
             $event = $this->calendar->events->insert($calendarId, $event);
         } catch (\Exception $e) {
-            $this->message['message'] = $e->getMessage();
+            $sharedData = array('shared_error' => true, 'shared_message' => $e->getMessage());
+            return redirect('/')->with($sharedData);
+
+            ## old message
+            /*$this->message['message'] = $e->getMessage();
             $this->message['error'] = true;
-            return $this->start();
+            return $this->start();*/
         }
 
-        $this->message['message'] = "Event '" . $data['name'] . "' created successfully.";
-        return $this->start();
+        $sharedData = array('shared_error' => false, 'shared_message' => "Event '" . $data['name'] . "' created successfully.");
+        return redirect('/')->with($sharedData);
+
+        ## old message
+        /*$this->message['message'] = "Event '" . $data['name'] . "' created successfully.";
+        return $this->start();*/
     }
 
     public function update($id, Request $request)
@@ -186,9 +194,13 @@ class MainController extends Controller
 
                     #if identical event -> error
                 ) {
-                    $this->message['error'] = true;
+                    $sharedData = array('shared_error' => true, 'shared_message' => "Identical post, '" . $eventName . "' was not updated.");
+                    return redirect('/')->with($sharedData);
+
+                    ## old message
+                    /*$this->message['error'] = true;
                     $this->message['message'] = "Identical post, '" . $eventName . "' was not updated.";
-                    return $this->start();
+                    return $this->start();*/
                     //print('identical event');
 
                     #otherwise add the event and return
@@ -207,13 +219,22 @@ class MainController extends Controller
                     try {
                         $this->calendar->events->update($calendarId, $id, $updatedEvent, array());
                     } catch (\Exception $e) {
-                        $this->message['error'] = true;
+
+                        $sharedData = array('shared_error' => true, 'shared_message' => $e->getMessage());
+                        return redirect('/')->with($sharedData);
+
+                        ## old message
+                        /*$this->message['error'] = true;
                         $this->message['message'] = $e->getMessage();
-                        return $this->start();
+                        return $this->start();*/
                     }
 
-                    $this->message['message'] = "Event '" . $eventName . "' updated successfully.";
-                    return $this->start();
+                    $sharedData = array('shared_error' => false, 'shared_message' => "Event '" . $eventName . "' updated successfully.");
+                    return redirect('/')->with($sharedData);
+
+                    ## old message
+                    /*$this->message['message'] = "Event '" . $eventName . "' updated successfully.";
+                    return $this->start();*/
                 }
                 #
                 # delete event
@@ -224,13 +245,20 @@ class MainController extends Controller
                 try {
                     $this->calendar->events->delete($calendarId, $id, array());
                 } catch (\Exception $e) {
-                    $this->message['message'] = $e->getMessage();
-                    $this->error = true;
-                    return $this->start();
+                    # old message
+                    /*$this->message['message'] = $e->getMessage();
+                    $this->error = true;*/
+                    $sharedData = array('shared_error' => true, 'shared_message' => $e->getMessage());
+                    //return $this->start();
+                    return redirect('/')->with($sharedData);
                 }
 
-                $this->message['message'] = "Deleted event '" . $event->getSummary() . "'.";
-                return $this->start();
+                ## old message
+                /*$this->message['message'] = "Deleted event '" . $event->getSummary() . "'.";
+                return $this->start();*/
+
+                $sharedData = array('shared_error' => false, 'shared_message' => "Deleted event '" . $event->getSummary() . "'.");
+                return redirect('/')->with($sharedData);
             }
         } else {
             return 'No id';

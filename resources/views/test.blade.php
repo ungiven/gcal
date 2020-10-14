@@ -8,7 +8,9 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>{{$hej}}</h1>
     <div id="app">
+        @if(session('shared_error')){{session('shared_message')}}@endif
         <test-component></test-component>
         <test-component></test-component>
         <test-component></test-component>

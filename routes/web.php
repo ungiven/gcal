@@ -31,9 +31,9 @@ Route::get('/auth', 'MainController@auth');
 //Route::get('/auth/{id}', 'MainController@auth');
 Route::post('/auth', 'MainController@auth');
 
-Route::get('/test', function () {
-    return view('test');
-});
+Route::get('/test', 'TestController@test');
+
+Route::get('/best', 'TestController@best');
 
 
 /*Route::get('/post/{id}', function ($id) {
