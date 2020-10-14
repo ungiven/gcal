@@ -6,3 +6,4 @@ php artisan key:generate
 composer install
 npm install
 npm install --save vue
+php artisan key:generate
