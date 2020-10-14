@@ -215,12 +215,19 @@ class MainController extends Controller
                     $this->message['message'] = "Event '" . $eventName . "' updated successfully.";
                     return $this->start();
                 }
-
-                #delete event
+                #
+                # delete event
+                #
             } else if ($request->input('delete') !== null) {
                 $event = $this->calendar->events->get($calendarId, $id, array());
 
-                $this->calendar->events->delete($calendarId, $id, array());
+                try {
+                    $this->calendar->events->delete($calendarId, $id, array());
+                } catch (\Exception $e) {
+                    $this->message['message'] = $e->getMessage();
+                    $this->error = true;
+                    return $this->start();
+                }
 
                 $this->message['message'] = "Deleted event '" . $event->getSummary() . "'.";
                 return $this->start();
