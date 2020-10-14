@@ -1,3 +1,5 @@
-# gcal
+# Google Calendar API with Laravel and Vue.js
 
-## hejo
+## Installation and running
+`./install`
+`./start`
