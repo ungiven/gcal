@@ -93,6 +93,14 @@
 
         }
 
+        .new-event-form input {
+            width: 95%;
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
         
     </style>
 </head>
@@ -135,7 +143,7 @@
                 <label for="name">Event Name</label>
                 <input type="text" name="name" id ="name" placeholder="Event name" required/>
             </div>
-            <input type="submit" id="submitButton" value="Add event" />
+            <input type="submit" id="submitButton" value="Add event" class="wide"/>
         </form>
     </div>
 </div>

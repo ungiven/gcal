@@ -9,7 +9,7 @@
             v-on:click="editMode = !editMode"
             title="Cancel"
           >
-            ✖
+            🡄
           </p>
           <div class="form-item">
             <label for="date">Date</label>
@@ -23,7 +23,18 @@
             <label for="end">End</label>
             <input name="end" type="time" value="00:00" required />
           </div>
-          <input type="submit" value="✓" name="submit" title="Save changes" />
+          <div class="submit-area">
+            <input type="submit" value="✓" name="submit" title="Save changes" />
+            <input
+              type="submit"
+              value="✖"
+              name="delete"
+              title="Delete Event"
+              class="delete-button"
+              formnovalidate
+            />
+          </div>
+
           <input type="hidden" name="_token" v-bind:value="csrf" />
           <input type="hidden" name="id" :value="itemId" />
         </form>
@@ -171,5 +182,16 @@ input[type="submit"]:hover {
 
 .calendar-item-body button:hover {
   background-color: white;
+}
+
+input.delete-button {
+  color: rgb(255, 91, 91);
+  background-color: white;
+  border-color: rgb(255, 91, 91);
+}
+
+input.delete-button:hover {
+  color: white;
+  background-color: rgb(255, 91, 91);
 }
 </style>
