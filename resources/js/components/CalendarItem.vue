@@ -97,7 +97,7 @@ input {
 
 .calendar-item {
   display: grid;
-  grid-template-columns: 10% auto;
+  grid-template-columns: 8% auto;
 }
 
 .calendar-item-head {
