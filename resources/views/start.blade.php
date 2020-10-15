@@ -95,6 +95,9 @@
 
         .new-event-form input {
             width: 95%;
+            border-width: 0 0 1px 1px;
+            border-style: solid;
+            border-color: #bbb;
         }
 
         .wide {
