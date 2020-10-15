@@ -9,15 +9,20 @@
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-        
+                
         #main {
             /*width: 30vw;
             margin: 0 auto 0 auto;*/
             display: grid;
             grid-template-columns: 30% auto 30%;
             grid-gap: 10px;
-            margin-bottom: 200px;
+
         }
+
+        #footer {
+            height: 300px;
+        }
+
 
         h1, h2 {
             font-family: 'Raleway';
@@ -109,7 +114,6 @@
         .wide input {
             height: 22px;
             padding: 0;
-            /*margin-top: 10px;*/
             width: 99%;
             background-color: white;
             border: 1px solid rgb(32, 129, 255);
@@ -167,8 +171,8 @@
         </form>
     </div>
 </div>
-    <div id="rest"><div>
-    </div>
-
+    <div id="rest"></div>
+</div>
+    <div id="footer"></div>
 </body>
 </html>
