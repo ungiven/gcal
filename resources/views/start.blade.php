@@ -98,17 +98,18 @@
             border-width: 0 0 1px 1px;
             border-style: solid;
             border-color: #bbb;
+            color: #555;
         }
 
         .wide {
             grid-column: span 2;
-            align-self: center;
+            align-self: end;
         }
 
         .wide input {
             height: 22px;
             padding: 0;
-            margin-top: 10px;
+            /*margin-top: 10px;*/
             width: 99%;
             background-color: white;
             border: 1px solid rgb(32, 129, 255);
