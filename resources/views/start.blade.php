@@ -99,6 +99,22 @@
 
         .wide {
             grid-column: span 2;
+            align-self: center;
+        }
+
+        .wide input {
+            height: 22px;
+            padding: 0;
+            margin-top: 10px;
+            width: 99%;
+            background-color: white;
+            border: 1px solid rgb(32, 129, 255);
+            color:  rgb(32, 129, 255);
+        }
+
+        .wide input:hover {
+            background-color: rgb(32, 129, 255);
+            color: white;
         }
 
         
@@ -143,7 +159,7 @@
                 <label for="name">Event Name</label>
                 <input type="text" name="name" id ="name" placeholder="Event name" required/>
             </div>
-            <input type="submit" id="submitButton" value="Add event" class="wide"/>
+            <div class="wide"><input type="submit" id="submitButton" value="Add event" class="wide"/></div>
         </form>
     </div>
 </div>

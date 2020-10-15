@@ -164,8 +164,6 @@ class MainController extends Controller
                     'id' => $id,
                 );
 
-
-
                 $pName = $request->input('name');
                 $pDate = $request->input('date');
                 $pStart = $request->input('start');
@@ -178,9 +176,6 @@ class MainController extends Controller
                 $eventName = $event->getSummary();
                 $eventStart = empty($start) ? $event->start->date : $start;
                 $eventEnd = empty($end) ? $event->end->date : $end;
-
-                /*print($eventStart);
-                print('<br>');*/
 
                 $pStartFormat = new \DateTime($pDate . " " . $pStart . '+02:00', new \DateTimeZone('Europe/Stockholm'));
                 $pEndFormat = new \DateTime($pDate . " " . $pEnd . '+02:00', new \DateTimeZone('Europe/Stockholm'));
@@ -196,12 +191,6 @@ class MainController extends Controller
                 ) {
                     $sharedData = array('shared_error' => true, 'shared_message' => "Identical post, '" . $eventName . "' was not updated.");
                     return redirect('/')->with($sharedData);
-
-                    ## old message
-                    /*$this->message['error'] = true;
-                    $this->message['message'] = "Identical post, '" . $eventName . "' was not updated.";
-                    return $this->start();*/
-                    //print('identical event');
 
                     #otherwise add the event and return
                 } else {

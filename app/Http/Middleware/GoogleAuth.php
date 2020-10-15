@@ -48,6 +48,7 @@ class GoogleAuth
             }
         }
 
+
         return $next($request);
     }
 }
