@@ -2007,6 +2007,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["name", "start", "end", "itemId", "csrf"],
   data: function data() {
@@ -2124,7 +2129,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ndiv[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.event-name[data-v-6d9c6edc] {\r\n  margin-top: 5px;\n}\ninput[data-v-6d9c6edc] {\r\n  width: 100%;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  color: #555;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 8% auto;\n}\n.calendar-item-head[data-v-6d9c6edc] {\r\n  font-family: \"Open sans\", \"sans-serif\";\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  color: #555;\n}\ninput[type=\"submit\"][data-v-6d9c6edc] {\r\n  color: rgb(32, 129, 255);\r\n  padding: 0;\r\n  margin: 0;\r\n  text-align: center;\r\n  width: 16px;\r\n  height: 16px;\r\n  font-size: 11px;\r\n  border: 1px solid rgb(32, 129, 255);\r\n  background-color: white;\n}\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\np.time[data-v-6d9c6edc] {\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #666;\n}\n.calendar-item-body[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 93% auto;\r\n  align-items: start;\r\n  grid-template-rows: auto auto;\r\n  margin-bottom: 10px;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  padding-left: 5px;\r\n  /*background-color: rgb(32, 129, 255);*/\r\n  background-color: white;\r\n  color: rgb(32, 129, 255);\n}\n.edit-form[data-v-6d9c6edc] {\r\n  display: block;\n}\n.edit-form form[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto auto auto 6.25%;\r\n  grid-template-rows: auto auto;\r\n  grid-template-areas: \"name name name .\";\r\n  grid-gap: 5px;\n}\n.event-name[data-v-6d9c6edc] {\r\n  grid-area: name;\n}\np.edit-button[data-v-6d9c6edc] {\r\n  /*border-radius: 10px;*/\r\n  font-size: 10px;\r\n  color: rgb(32, 129, 255);\r\n  border: 1px solid rgb(32, 129, 255);\r\n  margin: 5px 0 0 0;\r\n  padding: 0;\r\n  text-align: center;\r\n  width: 14px;\r\n  height: 14px;\n}\np.edit-button[data-v-6d9c6edc]:hover,\r\ninput[type=\"submit\"][data-v-6d9c6edc]:hover {\r\n  background-color: rgb(32, 129, 255);\r\n  color: white;\r\n  cursor: pointer;\n}\n.calendar-item-body button[data-v-6d9c6edc]:hover {\r\n  background-color: white;\n}\ninput.delete-button[data-v-6d9c6edc] {\r\n  color: rgb(255, 91, 91);\r\n  background-color: white;\r\n  border-color: rgb(255, 91, 91);\n}\ninput.delete-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(255, 91, 91);\n}\r\n", ""]);
+exports.push([module.i, "\ndiv[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.event-name[data-v-6d9c6edc] {\r\n  margin-top: 5px;\r\n  font-family: 'open sans';\r\n  color: rgb(32, 129, 255);\r\n  font-size: 16px;\r\n  text-transform: capitalize;\r\n  font-weight: normal;\r\n  padding: 0;\r\n  margin-top: 0;\n}\ninput[data-v-6d9c6edc] {\r\n  width: 100%;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  color: #555;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 8% auto 4%;\n}\n.calendar-item-head[data-v-6d9c6edc] {\r\n  font-family: \"Open sans\", \"sans-serif\";\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  color: #555;\n}\ninput[type=\"submit\"][data-v-6d9c6edc] {\r\n  color: rgb(32, 129, 255);\r\n  padding: 0;\r\n  margin: 0;\r\n  text-align: center;\r\n  width: 16px;\r\n  height: 16px;\r\n  font-size: 11px;\r\n  border: 1px solid rgb(32, 129, 255);\r\n  background-color: white;\n}\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.time[data-v-6d9c6edc] {\r\n  font-family: 'Open Sans', 'Tahoma', 'sans-serif';\r\n  font-size: 11px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #666;\n}\n.calendar-item-body[data-v-6d9c6edc] {\r\n  display: grid;\r\n  /*grid-template-columns: 93% auto;*/\r\n  align-items: start;\r\n  grid-template-rows: auto auto;\r\n  margin-bottom: 10px;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /*background-color: rgb(32, 129, 255);*/\r\n  background-color: white;\r\n  color: rgb(32, 129, 255);\n}\n.edit-form[data-v-6d9c6edc] {\r\n  display: block;\n}\n.edit-form form[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto auto auto auto;\r\n  grid-template-rows: auto auto;\r\n  grid-template-areas: \"name name name name\";\r\n  grid-gap: 2px;\r\n  margin-bottom: 5px;\n}\n.event-name[data-v-6d9c6edc] {\r\n  grid-area: name;\n}\np.edit-button[data-v-6d9c6edc] {\r\n  /*border-radius: 10px;*/\r\n  font-size: 10px;\r\n  color: rgb(32, 129, 255);\r\n  border: 1px solid rgb(32, 129, 255);\r\n  margin: 0;\r\n  padding: 0;\r\n  text-align: center;\r\n  width: 14px;\r\n  height: 14px;\n}\np.edit-button[data-v-6d9c6edc]:hover,\r\ninput[type=\"submit\"][data-v-6d9c6edc]:hover {\r\n  background-color: rgb(32, 129, 255);\r\n  color: white;\r\n  cursor: pointer;\n}\n.calendar-item-body button[data-v-6d9c6edc]:hover {\r\n  background-color: white;\n}\ninput.delete-button[data-v-6d9c6edc] {\r\n  color: rgb(255, 91, 91);\r\n  background-color: white;\r\n  border-color: rgb(255, 91, 91);\n}\ninput.delete-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(255, 91, 91);\n}\n.calendar-item-foot[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto;\r\n  grid-template-rows: auto auto auto;\r\n  padding: 0 0 10px 0;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -20530,8 +20535,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.editMode
-      ? _c("div", { staticClass: "calendar-item-body edit-form" }, [
-          _c("div", [
+      ? _c("div", { staticClass: "calendar-item" }, [
+          _c("div", { staticClass: "calendar-item-head" }, [
+            _vm._v(_vm._s(_vm.day(_vm.start)))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "calendar-item-body edit-form" }, [
             _c(
               "form",
               { attrs: { action: "/update/" + _vm.itemId, method: "POST" } },
@@ -20542,27 +20551,27 @@ var render = function() {
                   domProps: { value: _vm.name }
                 }),
                 _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    staticClass: "edit-button",
-                    attrs: { title: "Cancel" },
-                    on: {
-                      click: function($event) {
-                        _vm.editMode = !_vm.editMode
-                      }
-                    }
-                  },
-                  [_vm._v("\n          🡄\n        ")]
-                ),
+                _c("div", { staticClass: "form-item" }, [
+                  _c("label", { attrs: { for: "start" } }, [_vm._v("start")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "time",
+                    attrs: { name: "start", type: "time", required: "" },
+                    domProps: { value: _vm.time(_vm.start).substring(0, 5) }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-item" }, [
+                  _c("label", { attrs: { for: "end" } }, [_vm._v("End")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "time",
+                    attrs: { name: "end", type: "time", required: "" },
+                    domProps: { value: _vm.time(_vm.end).substring(0, 5) }
+                  })
+                ]),
                 _vm._v(" "),
                 _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
                 _vm._v(" "),
                 _c("input", {
                   attrs: { type: "hidden", name: "_token" },
@@ -20575,6 +20584,42 @@ var render = function() {
                 })
               ]
             )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "calendar-item-foot" }, [
+            _c(
+              "p",
+              {
+                staticClass: "edit-button edit-cancel",
+                attrs: { title: "Cancel" },
+                on: {
+                  click: function($event) {
+                    _vm.editMode = !_vm.editMode
+                  }
+                }
+              },
+              [_vm._v("\n          ⮨\n        ")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              attrs: {
+                type: "submit",
+                value: "✓",
+                name: "submit",
+                title: "Save changes"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "delete-button",
+              attrs: {
+                type: "submit",
+                value: "✖",
+                name: "delete",
+                title: "Delete Event",
+                formnovalidate: ""
+              }
+            })
           ])
         ])
       : _c("div", { staticClass: "calendar-item" }, [
@@ -20585,6 +20630,18 @@ var render = function() {
           _c("div", { staticClass: "calendar-item-body" }, [
             _c("h3", [_vm._v(_vm._s(_vm.name))]),
             _vm._v(" "),
+            _c("p", { staticClass: "time" }, [
+              _vm._v(
+                "\n        " +
+                  _vm._s(_vm.time(_vm.start).substring(0, 5)) +
+                  "-" +
+                  _vm._s(_vm.time(_vm.end).substring(0, 5)) +
+                  "\n      "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "calendar-item-foot" }, [
             _c(
               "p",
               {
@@ -20597,17 +20654,7 @@ var render = function() {
                 }
               },
               [_vm._v("\n        ✎\n      ")]
-            ),
-            _vm._v(" "),
-            _c("p", { staticClass: "time" }, [
-              _vm._v(
-                "\n        " +
-                  _vm._s(_vm.time(_vm.start).substring(0, 5)) +
-                  "-" +
-                  _vm._s(_vm.time(_vm.end).substring(0, 5)) +
-                  "\n      "
-              )
-            ])
+            )
           ])
         ])
   ])
@@ -20620,56 +20667,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-item" }, [
       _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
       _vm._v(" "),
-      _c("input", { attrs: { name: "date", type: "date", required: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-item" }, [
-      _c("label", { attrs: { for: "start" } }, [_vm._v("start")]),
-      _vm._v(" "),
       _c("input", {
-        attrs: { name: "start", type: "time", value: "00:00", required: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-item" }, [
-      _c("label", { attrs: { for: "end" } }, [_vm._v("End")]),
-      _vm._v(" "),
-      _c("input", {
-        attrs: { name: "end", type: "time", value: "00:00", required: "" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "submit-area" }, [
-      _c("input", {
-        attrs: {
-          type: "submit",
-          value: "✓",
-          name: "submit",
-          title: "Save changes"
-        }
-      }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "delete-button",
-        attrs: {
-          type: "submit",
-          value: "✖",
-          name: "delete",
-          title: "Delete Event",
-          formnovalidate: ""
-        }
+        staticClass: "time",
+        attrs: { name: "date", type: "date", required: "" }
       })
     ])
   }
@@ -33345,8 +33345,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\prog\laravel\gcal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\prog\laravel\gcal\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\Per\prog\laravel\gcal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Per\prog\laravel\gcal\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

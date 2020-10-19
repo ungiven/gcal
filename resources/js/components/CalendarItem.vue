@@ -1,30 +1,38 @@
 <template>
   <div>
-    <div v-if="editMode" class="calendar-item-body edit-form">
-      <div>
+    <div v-if="editMode" class="calendar-item">
+      <div class="calendar-item-head">{{ day(start) }}</div>
+      <div class="calendar-item-body edit-form">
         <form :action="'/update/' + itemId" method="POST">
           <input class="event-name" name="name" type="text" :value="name" />
-          <p
-            class="edit-button"
-            v-on:click="editMode = !editMode"
-            title="Cancel"
-          >
-            🡄
-          </p>
-          <div class="form-item">
-            <label for="date">Date</label>
-            <input name="date" type="date" required />
-          </div>
+          
+          
           <div class="form-item">
             <label for="start">start</label>
-            <input name="start" type="time" value="00:00" required />
+            <input name="start" class="time" type="time" :value="time(start).substring(0, 5)" required />
           </div>
           <div class="form-item">
             <label for="end">End</label>
-            <input name="end" type="time" value="00:00" required />
+            <input name="end" class="time" type="time" :value="time(end).substring(0, 5)" required />
           </div>
-          <div class="submit-area">
-            <input type="submit" value="✓" name="submit" title="Save changes" />
+
+          <div class="form-item">
+            <label for="date">Date</label>
+            <input name="date" class="time" type="date" required />
+          </div>
+
+          <input type="hidden" name="_token" v-bind:value="csrf" />
+          <input type="hidden" name="id" :value="itemId" />
+        </form>
+      </div>
+      <div class="calendar-item-foot"><p
+            class="edit-button edit-cancel"
+            v-on:click="editMode = !editMode"
+            title="Cancel"
+          >
+            ⮨
+          </p>
+           <input type="submit" value="✓" name="submit" title="Save changes" />
             <input
               type="submit"
               value="✖"
@@ -33,29 +41,26 @@
               class="delete-button"
               formnovalidate
             />
+          
           </div>
-
-          <input type="hidden" name="_token" v-bind:value="csrf" />
-          <input type="hidden" name="id" :value="itemId" />
-        </form>
-      </div>
     </div>
     <div class="calendar-item" v-else>
       <div class="calendar-item-head">{{ day(start) }}</div>
       <div class="calendar-item-body">
         <h3>{{ name }}</h3>
-        <p
-          class="edit-button"
-          v-on:click="editMode = !editMode"
-          title="Edit item"
-        >
-          ✎
-        </p>
+        
 
         <p class="time">
           {{ time(start).substring(0, 5) }}-{{ time(end).substring(0, 5) }}
         </p>
       </div>
+      <div class="calendar-item-foot"><p
+          class="edit-button"
+          v-on:click="editMode = !editMode"
+          title="Edit item"
+        >
+          ✎
+        </p></div>
     </div>
   </div>
 </template>
@@ -90,6 +95,14 @@ div {
 
 .event-name {
   margin-top: 5px;
+  font-family: 'open sans';
+  color: rgb(32, 129, 255);
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: normal;
+  padding: 0;
+  margin-top: 0;
+
 }
 input {
   width: 100%;
@@ -101,7 +114,7 @@ input {
 
 .calendar-item {
   display: grid;
-  grid-template-columns: 8% auto;
+  grid-template-columns: 8% auto 4%;
 }
 
 .calendar-item-head {
@@ -128,7 +141,9 @@ h3 {
   padding: 0;
 }
 
-p.time {
+.time {
+  font-family: 'Open Sans', 'Tahoma', 'sans-serif';
+  font-size: 11px;
   padding: 0;
   margin: 0;
   color: #666;
@@ -136,7 +151,7 @@ p.time {
 
 .calendar-item-body {
   display: grid;
-  grid-template-columns: 93% auto;
+  /*grid-template-columns: 93% auto;*/
   align-items: start;
   grid-template-rows: auto auto;
   margin-bottom: 10px;
@@ -144,6 +159,7 @@ p.time {
   border-style: solid;
   border-color: #bbb;
   padding-left: 5px;
+  padding-right: 5px;
   /*background-color: rgb(32, 129, 255);*/
   background-color: white;
   color: rgb(32, 129, 255);
@@ -155,11 +171,12 @@ p.time {
 
 .edit-form form {
   display: grid;
-  grid-template-columns: auto auto auto 6.25%;
+  grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto;
-  grid-template-areas: "name name name .";
-  grid-gap: 5px;
-}
+  grid-template-areas: "name name name name";
+  grid-gap: 2px;
+  margin-bottom: 5px;
+  }
 
 .event-name {
   grid-area: name;
@@ -170,7 +187,7 @@ p.edit-button {
   font-size: 10px;
   color: rgb(32, 129, 255);
   border: 1px solid rgb(32, 129, 255);
-  margin: 5px 0 0 0;
+  margin: 0;
   padding: 0;
   text-align: center;
   width: 14px;
@@ -198,4 +215,13 @@ input.delete-button:hover {
   color: white;
   background-color: rgb(255, 91, 91);
 }
+
+.calendar-item-foot {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  padding: 0 0 10px 0;
+}
+
+
 </style>
