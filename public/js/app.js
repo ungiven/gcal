@@ -2025,9 +2025,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     time: function time(ds) {
       var date = new Date(ds);
-      var options = {
-        weekday: "short"
-      };
       return date.toLocaleTimeString("sv-SE");
     },
     day: function day(ds) {
@@ -2036,6 +2033,15 @@ __webpack_require__.r(__webpack_exports__);
         weekday: "short"
       };
       return date.toLocaleDateString("en-US", options);
+    },
+    date: function date(ds) {
+      var date = new Date(ds);
+      var options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric'
+      };
+      return date.toLocaleDateString("sv-SE", options);
     }
   }
 });
@@ -20586,7 +20592,15 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(0),
+                _c("div", { staticClass: "form-item" }, [
+                  _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "time",
+                    attrs: { name: "date", type: "date", required: "" },
+                    domProps: { value: _vm.date(_vm.start) }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("input", {
                   attrs: { type: "hidden", name: "_token" },
@@ -20676,21 +20690,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-item" }, [
-      _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "time",
-        attrs: { name: "date", type: "date", required: "" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

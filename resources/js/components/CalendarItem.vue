@@ -18,7 +18,7 @@
 
           <div class="form-item">
             <label for="date">Date</label>
-            <input name="date" class="time" type="date" required />
+            <input name="date" class="time" type="date" :value="date(start)" required />
           </div>
 
           <input type="hidden" name="_token" v-bind:value="csrf" />
@@ -76,14 +76,17 @@ export default {
   methods: {
     time: (ds) => {
       let date = new Date(ds);
-      const options = { weekday: "short" };
-
       return date.toLocaleTimeString("sv-SE");
     },
     day: (ds) => {
       let date = new Date(ds);
       const options = { weekday: "short" };
       return date.toLocaleDateString("en-US", options);
+    },
+    date: (ds) => {
+      let date = new Date(ds);
+      const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+      return date.toLocaleDateString("sv-SE", options);
     },
   },
 };
