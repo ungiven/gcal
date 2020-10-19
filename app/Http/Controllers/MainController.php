@@ -153,6 +153,9 @@ class MainController extends Controller
         return $this->start();*/
     }
 
+
+    // Updates or deletes an event, determined by post event
+    // $id : id of item to delete given via GET
     public function update($id, Request $request)
     {
         if ($id) {

@@ -2138,7 +2138,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ndiv[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.event-name[data-v-6d9c6edc] {\r\n  margin-top: 5px;\r\n  font-family: 'open sans';\r\n  color: rgb(32, 129, 255);\r\n  font-size: 16px;\r\n  text-transform: capitalize;\r\n  font-weight: normal;\r\n  padding: 0;\r\n  margin-top: 0;\n}\ninput[data-v-6d9c6edc] {\r\n  width: 100%;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  color: #555;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 8% auto 4%;\n}\n.calendar-item-head[data-v-6d9c6edc] {\r\n  font-family: \"Open sans\", \"sans-serif\";\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  color: #555;\n}\ninput[type=\"submit\"][data-v-6d9c6edc] {\r\n  color: rgb(32, 129, 255);\r\n  padding: 0;\r\n  margin: 0;\r\n  text-align: center;\r\n  width: 16px;\r\n  height: 16px;\r\n  font-size: 11px;\r\n  border: 1px solid rgb(32, 129, 255);\r\n  background-color: white;\n}\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.time[data-v-6d9c6edc] {\r\n  font-family: 'Open Sans', 'Tahoma', 'sans-serif';\r\n  font-size: 11px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #666;\n}\n.calendar-item-body[data-v-6d9c6edc] {\r\n  display: grid;\r\n  /*grid-template-columns: 93% auto;*/\r\n  align-items: start;\r\n  grid-template-rows: auto auto;\r\n  margin-bottom: 10px;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /*background-color: rgb(32, 129, 255);*/\r\n  background-color: white;\r\n  color: rgb(32, 129, 255);\n}\n.edit-form[data-v-6d9c6edc] {\r\n  display: block;\n}\n.edit-form form[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto auto auto auto;\r\n  grid-template-rows: auto auto;\r\n  grid-template-areas: \"name name name name\";\r\n  grid-gap: 2px;\r\n  margin-bottom: 5px;\n}\n.event-name[data-v-6d9c6edc] {\r\n  grid-area: name;\n}\np.edit-button[data-v-6d9c6edc] {\r\n  /*border-radius: 10px;*/\r\n  font-size: 10px;\r\n  color: rgb(32, 129, 255);\r\n  border: 1px solid rgb(32, 129, 255);\r\n  margin: 0;\r\n  padding: 0;\r\n  text-align: center;\r\n  width: 14px;\r\n  height: 14px;\n}\np.edit-button[data-v-6d9c6edc]:hover,\r\ninput[type=\"submit\"][data-v-6d9c6edc]:hover {\r\n  background-color: rgb(32, 129, 255);\r\n  color: white;\r\n  cursor: pointer;\n}\n.calendar-item-body button[data-v-6d9c6edc]:hover {\r\n  background-color: white;\n}\ninput.delete-button[data-v-6d9c6edc] {\r\n  color: rgb(255, 91, 91);\r\n  background-color: white;\r\n  border-color: rgb(255, 91, 91);\n}\ninput.delete-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(255, 91, 91);\n}\n.calendar-item-foot[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto;\r\n  grid-template-rows: auto auto auto;\r\n  padding: 0 0 10px 0;\n}\n.edit-cancel[data-v-6d9c6edc] {\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\ndiv[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.event-name[data-v-6d9c6edc] {\r\n  margin-top: 5px;\r\n  font-family: 'open sans';\r\n  color: rgb(32, 129, 255);\r\n  font-size: 16px;\r\n  text-transform: capitalize;\r\n  font-weight: normal;\r\n  padding: 0;\r\n  margin-top: 0;\n}\ninput[data-v-6d9c6edc] {\r\n  width: 100%;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  color: #555;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 8% auto 4%;\n}\n.calendar-item-head[data-v-6d9c6edc] {\r\n  font-family: \"Open sans\", \"sans-serif\";\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  color: #555;\n}\ninput[type=\"submit\"][data-v-6d9c6edc] {\r\n  color: rgb(32, 129, 255);\r\n  padding: 0;\r\n  margin: 0;\r\n  text-align: center;\r\n  width: 16px;\r\n  height: 16px;\r\n  font-size: 11px;\r\n  border: 1px solid rgb(32, 129, 255);\r\n  background-color: white;\n}\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.time[data-v-6d9c6edc] {\r\n  font-family: 'Open Sans', 'Tahoma', 'sans-serif';\r\n  font-size: 11px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #666;\n}\n.calendar-item-body[data-v-6d9c6edc] {\r\n  display: grid;\r\n  /*grid-template-columns: 93% auto;*/\r\n  align-items: start;\r\n  grid-template-rows: auto auto;\r\n  margin-bottom: 10px;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /*background-color: rgb(32, 129, 255);*/\r\n  background-color: white;\r\n  color: rgb(32, 129, 255);\n}\n.edit-form[data-v-6d9c6edc] {\r\n  display: block;\n}\n.edit-form form[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto auto auto auto;\r\n  grid-template-rows: auto auto;\r\n  grid-template-areas: \"name name name name\";\r\n  grid-gap: 2px;\r\n  margin-bottom: 5px;\n}\n.event-name[data-v-6d9c6edc] {\r\n  grid-area: name;\n}\np.edit-button[data-v-6d9c6edc] {\r\n  /*border-radius: 10px;*/\r\n  font-size: 10px;\r\n  color: rgb(32, 129, 255);\r\n  border: 1px solid rgb(32, 129, 255);\r\n  margin: 0;\r\n  padding: 0;\r\n  text-align: center;\r\n  width: 14px;\r\n  height: 14px;\n}\np.edit-button[data-v-6d9c6edc]:hover,\r\ninput[type=\"submit\"][data-v-6d9c6edc]:hover {\r\n  background-color: rgb(32, 129, 255);\r\n  color: white;\r\n  cursor: pointer;\n}\n.calendar-item-body button[data-v-6d9c6edc]:hover {\r\n  background-color: white;\n}\ninput.delete-button[data-v-6d9c6edc] {\r\n  color: rgb(255, 91, 91);\r\n  background-color: white;\r\n  border-color: rgb(255, 91, 91);\n}\ninput.delete-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(255, 91, 91);\n}\n.calendar-item-foot[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto;\r\n  grid-template-rows: auto auto auto;\r\n  padding: 0 0 10px 0;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -20562,7 +20562,7 @@ var render = function() {
                 attrs: {
                   action: "/update/" + _vm.itemId,
                   method: "POST",
-                  id: "event-edit"
+                  id: "event-edit-" + _vm.itemId
                 }
               },
               [
@@ -20635,7 +20635,7 @@ var render = function() {
                 type: "submit",
                 value: "✓",
                 name: "submit",
-                form: "event-edit",
+                form: "event-edit-" + _vm.itemId,
                 title: "Save changes"
               }
             }),
@@ -20647,7 +20647,7 @@ var render = function() {
                 value: "✖",
                 name: "delete",
                 title: "Delete Event",
-                form: "event-edit",
+                form: "event-edit-" + _vm.itemId,
                 formnovalidate: ""
               }
             })
