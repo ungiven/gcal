@@ -3,7 +3,7 @@
     <div v-if="editMode" class="calendar-item">
       <div class="calendar-item-head">{{ day(start) }}</div>
       <div class="calendar-item-body edit-form">
-        <form :action="'/update/' + itemId" method="POST">
+        <form :action="'/update/' + itemId" method="POST" id="event-edit">
           <input class="event-name" name="name" type="text" :value="name" />
           
           
@@ -29,16 +29,18 @@
             class="edit-button edit-cancel"
             v-on:click="editMode = !editMode"
             title="Cancel"
+            form="event-edit"
           >
-            ⮨
+            &#128469;
           </p>
-           <input type="submit" value="✓" name="submit" title="Save changes" />
+           <input type="submit" value="✓" name="submit" form="event-edit" title="Save changes" />
             <input
               type="submit"
               value="✖"
               name="delete"
               title="Delete Event"
               class="delete-button"
+              form="event-edit"
               formnovalidate
             />
           
@@ -221,6 +223,10 @@ input.delete-button:hover {
   grid-template-columns: auto;
   grid-template-rows: auto auto auto;
   padding: 0 0 10px 0;
+}
+
+.edit-cancel {
+
 }
 
 
