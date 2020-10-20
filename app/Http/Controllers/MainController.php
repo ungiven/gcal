@@ -172,7 +172,14 @@ class MainController extends Controller
                 $pStart = $request->input('start');
                 $pEnd = $request->input('end');
 
-                $event = $this->calendar->events->get($calendarId, $id, array());
+                try {
+                    $event = $this->calendar->events->get($calendarId, $id, array());
+                } catch (\Exception $e) {
+                    $sharedData = array('shared_error' => true, 'shared_message' => $e->getMessage());
+                    return redirect('/')->with($sharedData);
+                }
+
+
                 $start = $event->start->dateTime;
                 $end = $event->end->dateTime;
 
@@ -253,7 +260,8 @@ class MainController extends Controller
                 return redirect('/')->with($sharedData);
             }
         } else {
-            return 'No id';
+            $sharedData = array('shared_error' => true, 'shared_message' => 'No id given');
+            return redirect('/')->with($sharedData);
         }
     }
 

@@ -33,7 +33,7 @@
           >
             &#128469;
           </p>
-           <input type="submit" value="✓" name="submit" :form="'event-edit-' + itemId" title="Save changes" />
+           <input type="submit" value="✓" name="submit" :form="'event-edit-' + itemId" title="Save changes" class="update-button" />
             <input
               type="submit"
               value="✖"
@@ -130,14 +130,16 @@ input {
 }
 
 input[type="submit"] {
-  color: rgb(32, 129, 255);
+  /*color: rgb(32, 129, 255);*/
+  color: rgb(87, 156, 87);
   padding: 0;
   margin: 0;
   text-align: center;
   width: 16px;
   height: 16px;
   font-size: 11px;
-  border: 1px solid rgb(32, 129, 255);
+  /*border: 1px solid rgb(32, 129, 255);*/
+  border: 1px solid rgb(87, 156, 87);
   background-color: white;
 }
 
@@ -214,6 +216,11 @@ input.delete-button {
   color: rgb(255, 91, 91);
   background-color: white;
   border-color: rgb(255, 91, 91);
+}
+
+input.update-button:hover {
+  color: white;
+  background-color: rgb(87, 156, 87)
 }
 
 input.delete-button:hover {

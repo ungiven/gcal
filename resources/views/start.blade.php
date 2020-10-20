@@ -79,8 +79,8 @@
         }
 
         #message {
-            color: green;
             font-family: 'open sans', 'sans-serif';
+            color:rgb(87, 156, 87);
 
         }
 
@@ -167,7 +167,7 @@
                 <label for="name">Event Name</label>
                 <input type="text" name="name" id ="name" placeholder="Event name" required/>
             </div>
-            <div class="wide"><input type="submit" id="submitButton" value="Add event" class="wide"/></div>
+            <div class="wide"><input type="submit" id="submitButton" value="Create Event" class="wide"/></div>
         </form>
     </div>
 </div>
