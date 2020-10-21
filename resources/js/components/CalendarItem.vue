@@ -48,11 +48,11 @@
     </div>
     <div class="calendar-item" v-else>
       <div class="calendar-item-head">{{ day(start) }}</div>
-      <div class="calendar-item-body">
+      <div class="calendar-item-body" v-bind:class="{ 'all-day': start.length == 10}">
         <h3>{{ name }}</h3>
         
-
-        <p class="time">
+        <p class="time all-day" v-if="allDay">All day</p>
+        <p class="time" v-else>
           {{ time(start).substring(0, 5) }}-{{ time(end).substring(0, 5) }}
         </p>
       </div>
@@ -70,19 +70,23 @@
 <script>
 export default {
   props: ["name", "start", "end", "itemId", "csrf"],
-  data: () => {
-    return { editMode: false };
+  
+  data() {
+    return { editMode: false, allDay: (this.start.length == 10)};
   },
+  
   methods: {
     time: (ds) => {
       let date = new Date(ds);
       return date.toLocaleTimeString("sv-SE");
     },
+    
     day: (ds) => {
       let date = new Date(ds);
       const options = { weekday: "short" };
       return date.toLocaleDateString("en-US", options);
     },
+    
     date: (ds) => {
       let date = new Date(ds);
       const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -234,6 +238,24 @@ input.delete-button:hover {
   grid-template-rows: auto auto auto;
   padding: 0 0 10px 0;
 }
+
+
+
+.calendar-item-body.all-day {
+  display: grid;
+  grid-template-columns: fit-content(80%) auto;
+  align-items: end;
+  grid-column-gap: 10px;
+}
+
+.calendar-item-body.all-day p {
+  text-align: right;
+  margin-right: 5px;
+}
+
+
+
+
 
 
 </style>
