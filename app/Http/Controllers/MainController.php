@@ -78,6 +78,9 @@ class MainController extends Controller
         $this->message['title'] = 'a';
         $this->message['items'] = [];
         foreach ($events as $event) {
+            /*print('<pre>');
+            var_dump($event);
+            print('</pre>');*/
             $start = $event->start->dateTime;
             $end = $event->end->dateTime;
 
@@ -89,6 +92,7 @@ class MainController extends Controller
                     //'id' => $event->getId(),
                     'id' => $event->id,
                     'end' => empty($end) ? $event->end->date : $end,
+                    'htmlLink' => $event->htmlLink,
                     //'date' => $event->start->date,
                     //'dateTime' => $event->start->datetime,
                 ]
@@ -109,11 +113,13 @@ class MainController extends Controller
             'date' => $request->input('date'),
             'time' => $request->input('time'),
             'end' => $request->input('end'),
+            'allday' => $request->input('allday'),
         );
 
-        if (!($data['name'] && $data['date'] && $data['time'] && $data['end'])) {
+
+        /*if (!($data['name'] && $data['date'] && $data['time'] && $data['end'])) {
             return "Enter event name, date and time.";
-        }
+        }*/
 
         # Create datetime object fro POST data
         $start = new \DateTime($data['date'] . " " . $data['time'], new \DateTimeZone('Europe/Stockholm'));
@@ -124,11 +130,14 @@ class MainController extends Controller
         $event = new \Google_Service_Calendar_Event(array(
             'summary' => $data['name'],
             'start' => array(
-                'dateTime' => $start->format(\DateTimeInterface::RFC3339),
+                // if all day event set date and not dateTime and vice versa
+                'date' => $data['allday'] ? date('Y-m-d', strtotime($data['date'])) : null,
+                'dateTime' => $data['allday'] ? null : $start->format(\DateTimeInterface::RFC3339),
             ),
             'end' => array(
                 //'dateTime' => $start->modify('+2 hours')->format(\DateTimeInterface::RFC3339),
-                'dateTime' => $end->format(\DateTimeInterface::RFC3339),
+                'date' => $data['allday'] ? date('Y-m-d', strtotime($data['date'] . '+1 day')) : null,
+                'dateTime' => $data['allday'] ? null : $end->format(\DateTimeInterface::RFC3339),
             )
         ));
 

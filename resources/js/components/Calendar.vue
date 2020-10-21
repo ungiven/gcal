@@ -10,6 +10,7 @@
       :end="item.end"
       :itemId="item.id"
       :csrf="csrf"
+      :htmlLink="item.htmlLink"
     ></calendar-item>
   </div>
 </template>

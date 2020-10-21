@@ -6,10 +6,16 @@
         <form :action="'/update/' + itemId" method="POST" :id="'event-edit-' + itemId">
           <input class="event-name" name="name" type="text" :value="name" />
           
+          <div class="all-day">
+            <label class="all-day" for="allday">All day</label>
+            <input name="allday" type="checkbox" v-bind:checked="allDay">
+            
+          </div>
+          
           
           <div class="form-item">
             <label for="start">start</label>
-            <input name="start" class="time" type="time" :value="time(start).substring(0, 5)" required />
+            <input name="start" class="time" type="time" :value="time(start).substring(0, 5)" required/>
           </div>
           <div class="form-item">
             <label for="end">End</label>
@@ -48,8 +54,8 @@
     </div>
     <div class="calendar-item" v-else>
       <div class="calendar-item-head">{{ day(start) }}</div>
-      <div class="calendar-item-body" v-bind:class="{ 'all-day': start.length == 10}">
-        <h3>{{ name }}</h3>
+      <div class="calendar-item-body" v-bind:class="{ 'all-day': allDay}">
+        <h3><a :href="htmlLink">{{ name }}</a></h3>
         
         <p class="time all-day" v-if="allDay">All day</p>
         <p class="time" v-else>
@@ -69,7 +75,7 @@
 
 <script>
 export default {
-  props: ["name", "start", "end", "itemId", "csrf"],
+  props: ["name", "start", "end", "itemId", "csrf", "htmlLink"],
   
   data() {
     return { editMode: false, allDay: (this.start.length == 10)};
@@ -182,9 +188,9 @@ h3 {
 
 .edit-form form {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto fit-content(50%);
   grid-template-rows: auto auto;
-  grid-template-areas: "name name name name";
+  grid-template-areas: "name name name .";
   grid-gap: 2px;
   margin-bottom: 5px;
   }
@@ -243,7 +249,7 @@ input.delete-button:hover {
 
 .calendar-item-body.all-day {
   display: grid;
-  grid-template-columns: fit-content(80%) auto;
+  grid-template-columns: 80% auto;
   align-items: end;
   grid-column-gap: 10px;
 }
@@ -254,6 +260,21 @@ input.delete-button:hover {
 }
 
 
+input[type="checkbox"] {
+  color: red;
+  /*display: inline!important;*/
+  width: unset;
+  margin: 0;
+  padding: 0;
+}
+
+label.all-day {
+  display: inline!important;
+}
+
+.edit-form div.all-day {
+  align-self: end;
+}
 
 
 

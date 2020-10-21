@@ -1924,6 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /*var calendar = new Vue({
     el: "#calendar",
@@ -2015,8 +2016,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["name", "start", "end", "itemId", "csrf"],
+  props: ["name", "start", "end", "itemId", "csrf", "htmlLink"],
   data: function data() {
     return {
       editMode: false,
@@ -2139,7 +2146,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ndiv[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.event-name[data-v-6d9c6edc] {\r\n  margin-top: 5px;\r\n  font-family: 'open sans';\r\n  color: rgb(32, 129, 255);\r\n  font-size: 16px;\r\n  text-transform: capitalize;\r\n  font-weight: normal;\r\n  padding: 0;\r\n  margin-top: 0;\n}\ninput[data-v-6d9c6edc] {\r\n  width: 100%;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  color: #555;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 8% auto 4%;\n}\n.calendar-item-head[data-v-6d9c6edc] {\r\n  font-family: \"Open sans\", \"sans-serif\";\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  color: #555;\n}\ninput[type=\"submit\"][data-v-6d9c6edc] {\r\n  /*color: rgb(32, 129, 255);*/\r\n  color: rgb(87, 156, 87);\r\n  padding: 0;\r\n  margin: 0;\r\n  text-align: center;\r\n  width: 16px;\r\n  height: 16px;\r\n  font-size: 11px;\r\n  /*border: 1px solid rgb(32, 129, 255);*/\r\n  border: 1px solid rgb(87, 156, 87);\r\n  background-color: white;\n}\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.time[data-v-6d9c6edc] {\r\n  font-family: 'Open Sans', 'Tahoma', 'sans-serif';\r\n  font-size: 11px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #666;\n}\n.calendar-item-body[data-v-6d9c6edc] {\r\n  display: grid;\r\n  /*grid-template-columns: 93% auto;*/\r\n  align-items: start;\r\n  grid-template-rows: auto auto;\r\n  margin-bottom: 10px;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /*background-color: rgb(32, 129, 255);*/\r\n  background-color: white;\r\n  color: rgb(32, 129, 255);\n}\n.edit-form[data-v-6d9c6edc] {\r\n  display: block;\n}\n.edit-form form[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto auto auto auto;\r\n  grid-template-rows: auto auto;\r\n  grid-template-areas: \"name name name name\";\r\n  grid-gap: 2px;\r\n  margin-bottom: 5px;\n}\n.event-name[data-v-6d9c6edc] {\r\n  grid-area: name;\n}\np.edit-button[data-v-6d9c6edc] {\r\n  /*border-radius: 10px;*/\r\n  font-size: 10px;\r\n  color: rgb(32, 129, 255);\r\n  border: 1px solid rgb(32, 129, 255);\r\n  margin: 0;\r\n  padding: 0;\r\n  text-align: center;\r\n  width: 14px;\r\n  height: 14px;\n}\np.edit-button[data-v-6d9c6edc]:hover,\r\ninput[type=\"submit\"][data-v-6d9c6edc]:hover {\r\n  background-color: rgb(32, 129, 255);\r\n  color: white;\r\n  cursor: pointer;\n}\n.calendar-item-body button[data-v-6d9c6edc]:hover {\r\n  background-color: white;\n}\ninput.delete-button[data-v-6d9c6edc] {\r\n  color: rgb(255, 91, 91);\r\n  background-color: white;\r\n  border-color: rgb(255, 91, 91);\n}\ninput.update-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(87, 156, 87)\n}\ninput.delete-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(255, 91, 91);\n}\n.calendar-item-foot[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto;\r\n  grid-template-rows: auto auto auto;\r\n  padding: 0 0 10px 0;\n}\n.calendar-item-body.all-day[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: fit-content(80%) auto;\r\n  align-items: end;\r\n  grid-column-gap: 10px;\n}\n.calendar-item-body.all-day p[data-v-6d9c6edc] {\r\n  text-align: right;\r\n  margin-right: 5px;\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\ndiv[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.event-name[data-v-6d9c6edc] {\r\n  margin-top: 5px;\r\n  font-family: 'open sans';\r\n  color: rgb(32, 129, 255);\r\n  font-size: 16px;\r\n  text-transform: capitalize;\r\n  font-weight: normal;\r\n  padding: 0;\r\n  margin-top: 0;\n}\ninput[data-v-6d9c6edc] {\r\n  width: 100%;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  color: #555;\n}\n.calendar-item[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 8% auto 4%;\n}\n.calendar-item-head[data-v-6d9c6edc] {\r\n  font-family: \"Open sans\", \"sans-serif\";\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  color: #555;\n}\ninput[type=\"submit\"][data-v-6d9c6edc] {\r\n  /*color: rgb(32, 129, 255);*/\r\n  color: rgb(87, 156, 87);\r\n  padding: 0;\r\n  margin: 0;\r\n  text-align: center;\r\n  width: 16px;\r\n  height: 16px;\r\n  font-size: 11px;\r\n  /*border: 1px solid rgb(32, 129, 255);*/\r\n  border: 1px solid rgb(87, 156, 87);\r\n  background-color: white;\n}\nh3[data-v-6d9c6edc] {\r\n  margin: 0;\r\n  padding: 0;\n}\n.time[data-v-6d9c6edc] {\r\n  font-family: 'Open Sans', 'Tahoma', 'sans-serif';\r\n  font-size: 11px;\r\n  padding: 0;\r\n  margin: 0;\r\n  color: #666;\n}\n.calendar-item-body[data-v-6d9c6edc] {\r\n  display: grid;\r\n  /*grid-template-columns: 93% auto;*/\r\n  align-items: start;\r\n  grid-template-rows: auto auto;\r\n  margin-bottom: 10px;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  border-color: #bbb;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /*background-color: rgb(32, 129, 255);*/\r\n  background-color: white;\r\n  color: rgb(32, 129, 255);\n}\n.edit-form[data-v-6d9c6edc] {\r\n  display: block;\n}\n.edit-form form[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto auto auto fit-content(50%);\r\n  grid-template-rows: auto auto;\r\n  grid-template-areas: \"name name name .\";\r\n  grid-gap: 2px;\r\n  margin-bottom: 5px;\n}\n.event-name[data-v-6d9c6edc] {\r\n  grid-area: name;\n}\np.edit-button[data-v-6d9c6edc] {\r\n  /*border-radius: 10px;*/\r\n  font-size: 10px;\r\n  color: rgb(32, 129, 255);\r\n  border: 1px solid rgb(32, 129, 255);\r\n  margin: 0;\r\n  padding: 0;\r\n  text-align: center;\r\n  width: 14px;\r\n  height: 14px;\n}\np.edit-button[data-v-6d9c6edc]:hover,\r\ninput[type=\"submit\"][data-v-6d9c6edc]:hover {\r\n  background-color: rgb(32, 129, 255);\r\n  color: white;\r\n  cursor: pointer;\n}\n.calendar-item-body button[data-v-6d9c6edc]:hover {\r\n  background-color: white;\n}\ninput.delete-button[data-v-6d9c6edc] {\r\n  color: rgb(255, 91, 91);\r\n  background-color: white;\r\n  border-color: rgb(255, 91, 91);\n}\ninput.update-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(87, 156, 87)\n}\ninput.delete-button[data-v-6d9c6edc]:hover {\r\n  color: white;\r\n  background-color: rgb(255, 91, 91);\n}\n.calendar-item-foot[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: auto;\r\n  grid-template-rows: auto auto auto;\r\n  padding: 0 0 10px 0;\n}\n.calendar-item-body.all-day[data-v-6d9c6edc] {\r\n  display: grid;\r\n  grid-template-columns: 80% auto;\r\n  align-items: end;\r\n  grid-column-gap: 10px;\n}\n.calendar-item-body.all-day p[data-v-6d9c6edc] {\r\n  text-align: right;\r\n  margin-right: 5px;\n}\ninput[type=\"checkbox\"][data-v-6d9c6edc] {\r\n  color: red;\r\n  /*display: inline!important;*/\r\n  width: unset;\r\n  margin: 0;\r\n  padding: 0;\n}\nlabel.all-day[data-v-6d9c6edc] {\r\n  display: inline!important;\n}\n.edit-form div.all-day[data-v-6d9c6edc] {\r\n  align-self: end;\n}\r\n\r\n\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -20519,7 +20526,8 @@ var render = function() {
             start: item.start,
             end: item.end,
             itemId: item.id,
-            csrf: _vm.csrf
+            csrf: _vm.csrf,
+            htmlLink: item.htmlLink
           }
         })
       })
@@ -20572,6 +20580,19 @@ var render = function() {
                   attrs: { name: "name", type: "text" },
                   domProps: { value: _vm.name }
                 }),
+                _vm._v(" "),
+                _c("div", { staticClass: "all-day" }, [
+                  _c(
+                    "label",
+                    { staticClass: "all-day", attrs: { for: "allday" } },
+                    [_vm._v("All day")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { name: "allday", type: "checkbox" },
+                    domProps: { checked: _vm.allDay }
+                  })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-item" }, [
                   _c("label", { attrs: { for: "start" } }, [_vm._v("start")]),
@@ -20664,10 +20685,14 @@ var render = function() {
             "div",
             {
               staticClass: "calendar-item-body",
-              class: { "all-day": _vm.start.length == 10 }
+              class: { "all-day": _vm.allDay }
             },
             [
-              _c("h3", [_vm._v(_vm._s(_vm.name))]),
+              _c("h3", [
+                _c("a", { attrs: { href: _vm.htmlLink } }, [
+                  _vm._v(_vm._s(_vm.name))
+                ])
+              ]),
               _vm._v(" "),
               _vm.allDay
                 ? _c("p", { staticClass: "time all-day" }, [_vm._v("All day")])
@@ -33373,8 +33398,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\prog\laravel\gcal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\prog\laravel\gcal\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\Per\prog\laravel\gcal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Per\prog\laravel\gcal\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

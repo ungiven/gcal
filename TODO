@@ -1,1 +1,6 @@
-Auth
+auth ui
+Add updated time when updating property $event->updated; takes time string?
+output htmlLink i <calendar-item>
+add "all day" support to update()
+add "destroy token" feature
+

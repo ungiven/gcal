@@ -40,22 +40,25 @@
             margin: 0;
         }
 
-        h3 {
+        h3 a {
             font-family: 'Open Sans';
             font-size: 16px;
             text-transform: capitalize;
             font-weight: normal;
+            text-decoration: none;
+            color: rgb(32, 129, 255);
 
+        }
+
+        h3 a:hover {
+            /*color: rgb(255, 109, 83);*/
+            color: white;
+            background-color: rgb(32, 129, 255);
         }
 
         h1 {
             border-bottom: 2px solid #bbb;
             padding-bottom: 5px;
-        }
-
-        p.time {
-            font-family: 'Open Sans', 'Tahoma', 'sans-serif';
-            font-size: 11px;
         }
 
         label {
@@ -68,7 +71,6 @@
 
         .form-item input {
             display: block;
-            font-family: 'Open sans';
         }
 
 
@@ -79,8 +81,8 @@
         }
 
         #message {
+            color: green;
             font-family: 'open sans', 'sans-serif';
-            color:rgb(87, 156, 87);
 
         }
 
@@ -104,10 +106,12 @@
             border-style: solid;
             border-color: #bbb;
             color: #555;
+            font-family: 'Open sans', 'Tahoma', 'sans-serif';
+            font-size: 12px;
         }
 
         .wide {
-            grid-column: span 2;
+            /*grid-column: span 2;*/
             align-self: end;
         }
 
@@ -118,6 +122,7 @@
             background-color: white;
             border: 1px solid rgb(32, 129, 255);
             color:  rgb(32, 129, 255);
+            font-size: 14px;
         }
 
         .wide input:hover {
@@ -167,7 +172,11 @@
                 <label for="name">Event Name</label>
                 <input type="text" name="name" id ="name" placeholder="Event name" required/>
             </div>
-            <div class="wide"><input type="submit" id="submitButton" value="Create Event" class="wide"/></div>
+            <div class="form-item">
+                <label for="allday">All day</label>
+                <input type="checkbox" name="allday" id="allday">
+            </div>
+            <div class="wide"><input type="submit" id="submitButton" value="Add event"/></div>
         </form>
     </div>
 </div>
