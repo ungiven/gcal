@@ -51,9 +51,9 @@
         }
 
         h3 a:hover {
-            /*color: rgb(255, 109, 83);*/
-            color: white;
-            background-color: rgb(32, 129, 255);
+            color: rgb(255, 109, 83);
+            /*color: white;
+            background-color: rgb(32, 129, 255);*/
         }
 
         h1 {

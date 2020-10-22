@@ -8,18 +8,18 @@
           
           <div class="all-day">
             <label class="all-day" for="allday">All day</label>
-            <input name="allday" type="checkbox" v-bind:checked="allDay">
+            <input name="allday" type="checkbox" v-model="checkedBox" v-bind:checked="allDay">
             
           </div>
           
           
           <div class="form-item">
-            <label for="start">start</label>
-            <input name="start" class="time" type="time" :value="time(start).substring(0, 5)" required/>
+            <label for="start">Start</label>
+            <input name="start" class="time" type="time" :value="time(start).substring(0, 5)" v-bind:disabled="checkedBox" required />
           </div>
           <div class="form-item">
             <label for="end">End</label>
-            <input name="end" class="time" type="time" :value="time(end).substring(0, 5)" required />
+            <input name="end" class="time" type="time" :value="time(end).substring(0, 5)" v-bind:disabled="checkedBox" required />
           </div>
 
           <div class="form-item">
@@ -78,7 +78,7 @@ export default {
   props: ["name", "start", "end", "itemId", "csrf", "htmlLink"],
   
   data() {
-    return { editMode: false, allDay: (this.start.length == 10)};
+    return { editMode: false, allDay: (this.start.length == 10), checkedBox: (this.start.length == 10)};
   },
   
   methods: {
@@ -261,7 +261,6 @@ input.delete-button:hover {
 
 
 input[type="checkbox"] {
-  color: red;
   /*display: inline!important;*/
   width: unset;
   margin: 0;
