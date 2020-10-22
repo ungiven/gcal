@@ -46,9 +46,17 @@ class GoogleAuth
                 #print('B');
                 return redirect('/auth')->with('authUrl', $authUrl);
             }
+
+            if (!file_exists(dirname($tokenPath))) {
+                mkdir(dirname($tokenPath), 0700, true);
+            }
+            file_put_contents($tokenPath, json_encode($client->getAccessToken()));
         }
 
+        /*$pass = new \DateTime();
+        $request->attributes->add(['pass' => $pass]);*/
 
+        $request->attributes->add(['client' => $this->client]);
         return $next($request);
     }
 }

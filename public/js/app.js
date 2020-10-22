@@ -2022,6 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["name", "start", "end", "itemId", "csrf", "htmlLink"],
   data: function data() {
@@ -20716,6 +20717,7 @@ var render = function() {
                 name: "delete",
                 title: "Delete Event",
                 form: "event-edit-" + _vm.itemId,
+                formaction: "/delete/" + _vm.itemId,
                 formnovalidate: ""
               }
             })

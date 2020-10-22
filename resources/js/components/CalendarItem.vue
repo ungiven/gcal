@@ -47,6 +47,7 @@
               title="Delete Event"
               class="delete-button"
               :form="'event-edit-' + itemId"
+              :formaction="'/delete/' + itemId"
               formnovalidate
             />
           
