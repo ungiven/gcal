@@ -30,11 +30,10 @@
     </style>
 </head>
 <body>
-<h1>{{$authUrl}}</h1>
+    <a href="{{$authUrl}}" style="text-align: center;"><h1>Get auth code</h1></a>
     <div id="main">
         <form>
-        <button>Get auth key!</button>
-        <input type="text" name="authCode" id="authkey" placeholder="Enter auth key here">
+        <input type="text" name="authCode" id="authkey" placeholder="Enter auth code here">
         <input type="submit" />
         </form>
     </div>

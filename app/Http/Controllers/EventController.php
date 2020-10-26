@@ -61,13 +61,12 @@ class EventController extends Controller
             return redirect('/')->with($sharedData);
         }
 
+        # redirect to start page on success
         $sharedData = array('shared_error' => false, 'shared_message' => "Event '" . $data['name'] . "' created successfully.", 'added_id' => $event->id);
-
         return redirect('/')->with($sharedData);
     }
 
     // Updates calendar event
-    // $id : id of event to update
     public function update(Request $request)
     {
         $this->client = $request->get('client');
@@ -112,7 +111,6 @@ class EventController extends Controller
     }
 
     // Deletes calendar event
-    // $id: id of event to delete
     public function delete(Request $request)
     {
         $this->client = $request->get('client');

@@ -45,9 +45,7 @@ class MainController extends Controller
         $this->message['title'] = 'a';
         $this->message['items'] = [];
         foreach ($events as $event) {
-            /*print('<pre>');
-            var_dump($event);
-            print('</pre>');*/
+
             $start = $event->start->dateTime;
             $end = $event->end->dateTime;
 
@@ -56,7 +54,6 @@ class MainController extends Controller
                 [
                     'name' => $event->getSummary(),
                     'start' => empty($start) ? $event->start->date : $start,
-                    //'id' => $event->getId(),
                     'id' => $event->id,
                     'end' => empty($end) ? $event->end->date : $end,
                     'htmlLink' => $event->htmlLink,
