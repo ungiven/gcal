@@ -25,7 +25,7 @@ Route::get('/', 'MainController@start')->middleware('googleauth');
 Route::post('/add', 'EventController@add')->middleware('googleauth');
 
 Route::post('/update/{id}', 'EventController@update')->middleware('googleauth')->middleware('verifyupdate');
-Route::post('/delete/{id}', 'EventController@delete')->middleware('verifydelete')->middleware('googleauth');
+Route::post('/delete/{id}', 'EventController@delete')->middleware('googleauth')->middleware('verifydelete');
 
 
 Route::get('/auth', 'MainController@auth');

@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'googleauth' => \App\Http\Middleware\GoogleAuth::class,
         'verifyupdate' => \App\Http\Middleware\VerifyUpdate::class,
+        'verifydelete' => \App\Http\Middleware\VerifyDelete::class,
     ];
 }

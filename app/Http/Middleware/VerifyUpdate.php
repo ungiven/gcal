@@ -16,6 +16,18 @@ class VerifyUpdate
      */
     public function handle(Request $request, Closure $next)
     {
+        $id = $request->get('id');
+
+        if (!$request->input('submit')) {
+            $sharedData = array('shared_error' => true, 'shared_message' => 'Access error');
+            return redirect('/')->with($sharedData);
+        }
+
+        if (!$id) {
+            $sharedData = array('shared_error' => true, 'shared_message' => 'No id');
+            return redirect('/')->with($sharedData);
+        }
+
         return $next($request);
     }
 }

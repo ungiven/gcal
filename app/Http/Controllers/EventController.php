@@ -77,16 +77,6 @@ class EventController extends Controller
     // $id : id of event to update
     public function update($id = null, Request $request)
     {
-        if (!$id) {
-            $sharedData = array('shared_error' => true, 'shared_message' => 'No id given');
-            return redirect('/')->with($sharedData);
-        }
-
-        if (!$request->input('submit')) {
-            $sharedData = array('shared_error' => true, 'shared_message' => 'Access error');
-            return redirect('/')->with($sharedData);
-        }
-
         $this->client = $request->get('client');
         $this->calendar = new \Google_Service_Calendar($this->client);
 
@@ -120,21 +110,20 @@ class EventController extends Controller
             $eventStart = empty($start) ? $event->start->date : $start;
             $eventEnd = empty($end) ? $event->end->date : $end;
 
-            $pStartFormat = new \DateTime($data['date'] . " " . $data['time'] . '+02:00', new \DateTimeZone('Europe/Stockholm'));
-            $pEndFormat = new \DateTime($data['date'] . " " . $data['end'] . '+02:00', new \DateTimeZone('Europe/Stockholm'));
+            date_default_timezone_set('Europe/Stockholm');
+            $timeOffset = date('P');
 
+            $pStartFormat = new \DateTime($data['date'] . " " . $data['time'] . $timeOffset, new \DateTimeZone('Europe/Stockholm'));
+            $pEndFormat = new \DateTime($data['date'] . " " . $data['end'] . $timeOffset, new \DateTimeZone('Europe/Stockholm'));
 
-            // All day event
-            /*var_dump(!empty($data['allday']));
-            var_dump($eventAllDay);
-            dd();*/
 
             # Check if events are identical
-            // All day event
+
             if (
                 !empty($data['allday']) &&
                 $eventAllDay &&
-                $eventName == $data['name']
+                $eventName == $data['name'] &&
+                $eventStart == $data['date']
             ) {
                 $sharedData = array('shared_error' => true, 'shared_message' => "Identical post, '" . $eventName . "' was not updated.");
                 return redirect('/')->with($sharedData);
@@ -174,6 +163,7 @@ class EventController extends Controller
                 }
 
                 $sharedData = array('shared_error' => false, 'shared_message' => "Event '" . $eventName . "' updated successfully.");
+
                 return redirect('/')->with($sharedData);
             }
         }
@@ -183,18 +173,6 @@ class EventController extends Controller
     // $id: id of event to delete
     public function delete($id = null, Request $request)
     {
-        // Error if no delete post
-        if (!$id) {
-            $sharedData = array('shared_error' => true, 'shared_message' => 'No id');
-            return redirect('/')->with($sharedData);
-        }
-
-        if (!$request->input('delete')) {
-
-            $sharedData = array('shared_error' => true, 'shared_message' => 'Access error');
-            return redirect('/')->with($sharedData);
-        }
-
         $this->client = $request->get('client');
         $this->calendar = new \Google_Service_Calendar($this->client);
         $calendarId = 'primary';
