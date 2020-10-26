@@ -22,10 +22,10 @@ Route::get('/', 'MainController@start')->middleware('googleauth');
 
 //Route::get('/add', 'MainController@add');
 
-Route::post('/add', 'EventController@add')->middleware('googleauth');
+Route::post('/add', 'EventController@add')->middleware('googleauth')->middleware('verifyadd');
 
-Route::post('/update/{id}', 'EventController@update')->middleware('googleauth')->middleware('verifyupdate');
-Route::post('/delete/{id}', 'EventController@delete')->middleware('googleauth')->middleware('verifydelete');
+Route::post('/update', 'EventController@update')->middleware('googleauth')->middleware('verifyupdate');
+Route::post('/delete', 'EventController@delete')->middleware('googleauth')->middleware('verifydelete');
 
 
 Route::get('/auth', 'MainController@auth');

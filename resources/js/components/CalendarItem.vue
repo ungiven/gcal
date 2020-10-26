@@ -3,7 +3,7 @@
     <div v-if="editMode" class="calendar-item">
       <div class="calendar-item-head">{{ day(start) }}</div>
       <div class="calendar-item-body edit-form">
-        <form :action="'/update/' + itemId" method="POST" :id="'event-edit-' + itemId">
+        <form :action="'/update'" method="POST" :id="'event-edit-' + itemId">
           <input class="event-name" name="name" type="text" :value="name" />
           
           <div class="all-day">
@@ -47,7 +47,7 @@
               title="Delete Event"
               class="delete-button"
               :form="'event-edit-' + itemId"
-              :formaction="'/delete/' + itemId"
+              :formaction="'/delete'"
               formnovalidate
             />
           

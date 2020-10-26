@@ -26,6 +26,9 @@ class MainController extends Controller
         $this->client = $request->get('client');
         $this->calendar = new \Google_Service_Calendar($this->client);
 
+
+
+
         $calendarId = 'primary';
         $optParams = array(
             'maxResults' => 10,

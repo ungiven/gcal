@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'googleauth' => \App\Http\Middleware\GoogleAuth::class,
         'verifyupdate' => \App\Http\Middleware\VerifyUpdate::class,
         'verifydelete' => \App\Http\Middleware\VerifyDelete::class,
+        'verifyadd' => \App\Http\Middleware\VerifyAdd::class,
     ];
 }

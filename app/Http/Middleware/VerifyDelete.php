@@ -16,18 +16,19 @@ class VerifyDelete
      */
     public function handle(Request $request, Closure $next)
     {
-        $id = $request->get('id');
+        //$id = $request->get('id');
+        $id = $request->input('id');
 
         if (!$id) {
             $sharedData = array('shared_error' => true, 'shared_message' => 'No id');
             return redirect('/')->with($sharedData);
         }
 
-        if (!$request->input('delete')) {
+        /*if (!$request->input('delete')) {
 
             $sharedData = array('shared_error' => true, 'shared_message' => 'Access error');
             return redirect('/')->with($sharedData);
-        }
+        }*/
 
         return $next($request);
     }

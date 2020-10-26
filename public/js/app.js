@@ -20571,7 +20571,7 @@ var render = function() {
               "form",
               {
                 attrs: {
-                  action: "/update/" + _vm.itemId,
+                  action: "/update",
                   method: "POST",
                   id: "event-edit-" + _vm.itemId
                 }
@@ -20717,7 +20717,7 @@ var render = function() {
                 name: "delete",
                 title: "Delete Event",
                 form: "event-edit-" + _vm.itemId,
-                formaction: "/delete/" + _vm.itemId,
+                formaction: "/delete",
                 formnovalidate: ""
               }
             })
