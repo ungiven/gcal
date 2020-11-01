@@ -18,18 +18,12 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 
-Route::get('/', 'MainController@start')->middleware('googleauth');
+Route::get('/', 'MainController@index')->middleware('googleauth');
 
 
-Route::post('/add', 'AddController@main')->middleware('verifyadd');
-Route::post('/delete', 'DeleteController@main')->middleware('verifydelete');
-Route::post('/update', 'UpdateController@main')->middleware('verifyupdate');
+Route::post('/add', 'AddController@main')->middleware('googleauth')->middleware('verifyadd');
+Route::post('/delete', 'DeleteController@main')->middleware('googleauth')->middleware('verifydelete');
+Route::post('/update', 'UpdateController@main')->middleware('googleauth')->middleware('verifyupdate');
 
-Route::get('/asdf', 'MainController@asdf');
-
-//Route::post('/update', 'EventController@update')->middleware('googleauth')->middleware('verifyupdate');
-//Route::post('/delete', 'EventController@delete')->middleware('googleauth')->middleware('verifydelete');
-//Route::post('/add', 'EventController@add')->middleware('googleauth')->middleware('verifyadd');
-
-Route::get('/auth', 'MainController@auth');
-Route::post('/auth', 'MainController@auth');
+Route::get('/auth', 'AuthController@index');
+Route::post('/auth', 'AuthController@auth');

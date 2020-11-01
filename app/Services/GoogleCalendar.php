@@ -39,8 +39,20 @@ class GoogleCalendar
 
     public function update($id, $event)
     {
-        $this->calendar->events->update($this->calendarId, $id, $event);
+        return $this->calendar->events->update($this->calendarId, $id, $event);
     }
+
+    /**
+     * Creates an event and returns it.
+     * @param array $data {
+     *
+     *     @type string name Event name
+     *     @type string date Date of event, YYYY-MM-DD
+     *     @type string start Dvent start time
+     *     @type string end Event end time
+     * }
+     * @return GoogleCalendarEvent
+     */
 
     public function createEvent($data)
     {
@@ -61,7 +73,6 @@ class GoogleCalendar
             )
         );
 
-        //return new \Google_Service_Calendar_Event($eventData);
         return new GoogleCalendarEvent($eventData);
     }
 

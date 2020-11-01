@@ -4,6 +4,12 @@ namespace App\Services;
 
 class GoogleCalendarEvent extends \Google_Service_Calendar_Event
 {
+    /**
+     * Compares this event with event.
+     * @param Google_Service_Calendar_Event $event
+     * @return bool True if events are equal else false.
+     */
+
     public function compare($event)
     {
         return ($this->summary == $event->summary &&

@@ -30,10 +30,11 @@
     </style>
 </head>
 <body>
-    <a href="{{$authUrl}}" style="text-align: center;"><h1>Get auth code</h1></a>
+    <a href="{{$authUrl}}" target="_blank" style="text-align: center;"><h1>Get auth key</h1></a>
     <div id="main">
-        <form>
-        <input type="text" name="authCode" id="authkey" placeholder="Enter auth code here">
+        <form method="post">
+            @csrf
+        <input type="text" name="authkey" id="authkey" placeholder="Enter auth key here">
         <input type="submit" />
         </form>
     </div>

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-//vendor\google\apiclient\src\Google;
 
 use Illuminate\Http\Request;
 use App\Services\GoogleCalendar;
-
-
 
 class MainController extends Controller
 {
@@ -19,8 +16,7 @@ class MainController extends Controller
         $this->message = ['error' => false, 'message' => NULL];
     }
 
-
-    public function start(GoogleCalendar $calendar)
+    public function index(GoogleCalendar $calendar)
     {
         $optParams = array(
             'maxResults' => 10,
@@ -48,8 +44,6 @@ class MainController extends Controller
                     'id' => $event->id,
                     'end' => empty($end) ? $event->end->date : $end,
                     'htmlLink' => $event->htmlLink,
-                    //'date' => $event->start->date,
-                    //'dateTime' => $event->start->datetime,
                 ]
             );
         }
@@ -59,17 +53,8 @@ class MainController extends Controller
         return view('start')->with($this->message);
     }
 
-
-
     public function auth(Request $request, \Google_Client $client)
     {
-        //$this->calendar = new \Google_Service_Calendar($this->client);
-        $client->setApplicationName('Google Calendar API PHP');
-        $client->setScopes(\Google_Service_Calendar::CALENDAR);
-        $client->setAuthConfig(base_path() . '/credentials.json');
-        $client->setAccessType('offline');
-        $client->setPrompt('select_account consent');
-
         $this->client = $client;
 
         if (!empty($request->input('authCode'))) {
@@ -96,9 +81,5 @@ class MainController extends Controller
             $authUrl = $this->client->createAuthUrl();
             return view('auth')->with('authUrl', $authUrl);
         }
-    }
-
-    public function asdf()
-    {
     }
 }

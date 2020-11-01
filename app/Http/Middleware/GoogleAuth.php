@@ -29,8 +29,7 @@ class GoogleAuth
             $accessToken = json_decode(file_get_contents($tokenPath), true);
             $this->client->setAccessToken($accessToken);
         } else {
-            $authUrl = $this->client->createAuthUrl();
-            return redirect('/auth')->with('authUrl', $authUrl);
+            return redirect('/auth');
         }
 
         if ($this->client->isAccessTokenExpired()) {
@@ -38,8 +37,7 @@ class GoogleAuth
             if ($this->client->getRefreshToken()) {
                 $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
             } else {
-                $authUrl = $this->client->createAuthUrl();
-                return redirect('/auth')->with('authUrl', $authUrl);
+                return redirect('/auth');
             }
 
             if (!file_exists(dirname($tokenPath))) {

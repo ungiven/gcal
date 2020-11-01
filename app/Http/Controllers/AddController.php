@@ -7,13 +7,6 @@ use Illuminate\Http\Request;
 
 class AddController extends Controller
 {
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param 
-     * @return string|null
-     */
     public function main(Request $request, GoogleCalendar $calendar)
     {
         $data = $request->input();
