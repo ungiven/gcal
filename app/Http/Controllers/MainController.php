@@ -11,7 +11,6 @@ use App\Services\GoogleCalendar;
 
 class MainController extends Controller
 {
-    private $calendar;
     private $client;
     private $message;
 
