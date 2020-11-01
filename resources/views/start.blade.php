@@ -148,7 +148,7 @@
         <div id="content">
         <div id="app">
 
-            <calendar :title="'{{$title}}'" :items="{{$items}}" :csrf="'{{csrf_token()}}'"></calendar>
+            <calendar :title="'{{$title}}'" :items='@json($items)' :csrf="'{{csrf_token()}}'"></calendar>
         </div>
     <div id="form">
         <h2>New event</h2>
@@ -161,7 +161,7 @@
             </div>
             <div class="form-item">
                 <label for="time">Start</label>
-                <input type="time" name="time" id="time" value="00:00" required/>
+                <input type="time" name="start" id="start" value="00:00" required/>
             </div>
              <div class="form-item">
                 <label for="end">End</label>

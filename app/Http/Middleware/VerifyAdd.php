@@ -16,19 +16,17 @@ class VerifyAdd
      */
     public function handle(Request $request, Closure $next)
     {
-        /*$data = $request->input();
-
-        /dd($data);
-
-        if (isset($data['allday']) and $data['allday'] == 'on') {
-            if (!($data['name'] && $data['date'])) {
-                return "bla";
-            }
-        } else {
-            if (!($data['name'] && $data['date'] && $data['time'] && $data['end'])) {
-                return "Enter event name, date and time.";
-            }
-        }*/
+        try {
+            $request->validate([
+                'name' => 'required|string',
+                'date' => 'required|date',
+                'start' => 'required_without:allday',
+                'end' => 'required_without:allday',
+                'allday' => 'nullable'
+            ]);
+        } catch (\Exception $e) {
+            dd($e);
+        }
 
         return $next($request);
     }

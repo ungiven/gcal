@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //vendor\google\apiclient\src\Google;
 
 use Illuminate\Http\Request;
+use App\Services\GoogleCalendar;
 
 
 
@@ -14,22 +15,14 @@ class MainController extends Controller
     private $client;
     private $message;
 
-    public function __construct(Request $request)
+    public function __construct()
     {
         $this->message = ['error' => false, 'message' => NULL];
     }
 
 
-    public function start(Request $request)
+    public function start(GoogleCalendar $calendar)
     {
-        //$this->calendar = new \Google_Service_Calendar($this->client);
-        $this->client = $request->get('client');
-        $this->calendar = new \Google_Service_Calendar($this->client);
-
-
-
-
-        $calendarId = 'primary';
         $optParams = array(
             'maxResults' => 10,
             'orderBy' => 'startTime',
@@ -37,9 +30,8 @@ class MainController extends Controller
             'timeMin' => date('c'),
             'timeMax' => date('c', time() + (7 * 24 * 60 * 60)),
         );
-        $results = $this->calendar->events->listEvents($calendarId, $optParams);
 
-        $events = $results->getItems();
+        $events = $calendar->listEvents($optParams);
 
         # Create events json object for blade / vue / view and and pass it
         $this->message['title'] = 'a';
@@ -63,17 +55,16 @@ class MainController extends Controller
             );
         }
 
-        $this->message['items'] = json_encode($this->message['items']);
+        //$this->message['items'] = json_encode($this->message['items']);
 
         return view('start')->with($this->message);
     }
 
 
 
-    public function auth(Request $request)
+    public function auth(Request $request, \Google_Client $client)
     {
         //$this->calendar = new \Google_Service_Calendar($this->client);
-        $client = new \Google_Client();
         $client->setApplicationName('Google Calendar API PHP');
         $client->setScopes(\Google_Service_Calendar::CALENDAR);
         $client->setAuthConfig(base_path() . '/credentials.json');
@@ -106,5 +97,9 @@ class MainController extends Controller
             $authUrl = $this->client->createAuthUrl();
             return view('auth')->with('authUrl', $authUrl);
         }
+    }
+
+    public function asdf()
+    {
     }
 }

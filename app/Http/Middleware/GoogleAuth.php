@@ -9,6 +9,11 @@ class GoogleAuth
 {
     private $client;
 
+    public function __construct(\Google_Client $client)
+    {
+        $this->client = $client;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -16,24 +21,15 @@ class GoogleAuth
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle(Request $request, Closure $next)
     {
-        $client = new \Google_Client();
-        $client->setApplicationName('Google Calendar API PHP');
-        $client->setScopes(\Google_Service_Calendar::CALENDAR);
-        $client->setAuthConfig(base_path() . '/credentials.json');
-        $client->setAccessType('offline');
-        $client->setPrompt('select_account consent');
-
-        $this->client = $client;
-
         $tokenPath = base_path() . '/token.json';
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
             $this->client->setAccessToken($accessToken);
         } else {
             $authUrl = $this->client->createAuthUrl();
-            #print('A');
             return redirect('/auth')->with('authUrl', $authUrl);
         }
 
@@ -43,20 +39,15 @@ class GoogleAuth
                 $this->client->fetchAccessTokenWithRefreshToken($this->client->getRefreshToken());
             } else {
                 $authUrl = $this->client->createAuthUrl();
-                #print('B');
                 return redirect('/auth')->with('authUrl', $authUrl);
             }
 
             if (!file_exists(dirname($tokenPath))) {
                 mkdir(dirname($tokenPath), 0700, true);
             }
-            file_put_contents($tokenPath, json_encode($client->getAccessToken()));
+            file_put_contents($tokenPath, json_encode($this->client->getAccessToken()));
         }
 
-        /*$pass = new \DateTime();
-        $request->attributes->add(['pass' => $pass]);*/
-
-        $request->attributes->add(['client' => $this->client]);
         return $next($request);
     }
 }
