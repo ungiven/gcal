@@ -25,7 +25,7 @@ class VerifyAdd
                 'allday' => 'nullable'
             ]);
         } catch (\Exception $e) {
-            dd($e);
+            //dd($e);
         }
 
         return $next($request);

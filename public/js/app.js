@@ -1925,13 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-/*var calendar = new Vue({
-    el: "#calendar",
-    data: {
-        message: "CAL"
-    }
-});*/
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["title", "items", "csrf"]
 });

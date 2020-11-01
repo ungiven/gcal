@@ -12,6 +12,11 @@ class AddController extends Controller
         $data = $request->input();
         $data['allday'] = $request->input('allday');
 
+        if ($data['allday']) {
+            $data['start'] = '00:00';
+            $data['end'] = '00:00';
+        }
+
         $event = $calendar->createEvent($data);
 
         try {

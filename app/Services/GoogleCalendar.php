@@ -48,7 +48,7 @@ class GoogleCalendar
      *
      *     @type string name Event name
      *     @type string date Date of event, YYYY-MM-DD
-     *     @type string start Dvent start time
+     *     @type string start Event start time
      *     @type string end Event end time
      * }
      * @return GoogleCalendarEvent
@@ -56,6 +56,11 @@ class GoogleCalendar
 
     public function createEvent($data)
     {
+        if ($data['allday']) {
+            $data['start'] = '00:00';
+            $data['end'] = '00:00';
+        }
+
         date_default_timezone_set('Europe/Stockholm');
         $start = date('c', strtotime($data['date'] . " " . $data['start']));
         $end = date('c', strtotime($data['date'] . " " . $data['end']));
@@ -75,6 +80,12 @@ class GoogleCalendar
 
         return new GoogleCalendarEvent($eventData);
     }
+
+    /**
+     * Sets a new calendar id.
+     * @param string $id New id.
+     * @return void
+     */
 
     public function setCalendarId($id)
     {

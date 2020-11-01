@@ -21,9 +21,9 @@ class VerifyDelete
                 'id' => 'required',
             ]);
         } catch (\Exception $e) {
-            dd($e);
-            $sharedData = array('shared_error' => true, 'shared_message' => 'No id');
-            return redirect('/')->with($sharedData);
+            //dd($e);
+            #$sharedData = array('shared_error' => true, 'shared_message' => 'No id');
+            #return redirect('/')->with($sharedData);
         }
 
         return $next($request);

@@ -35,9 +35,8 @@ class ErrorTest extends TestCase
         $response = $this->withHeaders([])->json('POST', '/add', [
             'name' => 'Test Event',
             'date' => '2020-10-31',
-            'time' => '15:00',
+            'start' => '15:00',
             'end' => '19:00',
-            'allday' => 'off',
 
         ]);
 
@@ -102,7 +101,6 @@ class ErrorTest extends TestCase
             'date' => '2020-10-27',
             'start' => '10:00',
             'end' => '15:00',
-            'allday' => 'off',
 
         ]);
 
@@ -120,7 +118,6 @@ class ErrorTest extends TestCase
             'date' => '2020-10-31',
             'start' => '15:00',
             'end' => '19:00',
-            'allday' => 'off',
 
         ]);
 
@@ -138,7 +135,6 @@ class ErrorTest extends TestCase
             'date' => '2020-10-31',
             'start' => '15:00',
             'end' => '19:00',
-            'allday' => 'off',
 
         ]);
         $response->assertRedirect('/');

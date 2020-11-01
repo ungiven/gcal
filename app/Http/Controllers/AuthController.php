@@ -23,14 +23,13 @@ class AuthController extends Controller
     public function auth(Request $request)
     {
         $request->validate([
-            'authkey' => 'required',
+            'authcode' => 'required',
         ]);
 
-        $authCode = $request->input('authkey');
-        $accessToken = $this->client->fetchAccessTokenWithAuthCode($authCode);
+        $authCode = $request->input('authcode');
+        $accessToken = $this->client->fetchAccessTokenWithauthCode($authCode);
 
         $this->client->setAccessToken($accessToken);
-
 
         $tokenPath = base_path() . '/token.json';
 

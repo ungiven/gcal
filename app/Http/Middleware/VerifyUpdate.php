@@ -19,14 +19,16 @@ class VerifyUpdate
         try {
             $data = $request->validate(array(
                 'id' => 'required',
-                'name' => 'required',
-                'date' => 'required',
+                'name' => 'required|string',
+                'date' => 'required|date',
                 'start' => 'required_without:allday',
                 'end' => 'required_without:allday',
             ));
         } catch (\Exception $e) {
-            dd($e);
+            //dd($e);
         }
+
+        $request->input('end')->set('nej');
 
         return $next($request);
     }

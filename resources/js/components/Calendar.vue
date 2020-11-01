@@ -16,13 +16,6 @@
 </template>
 
 <script>
-/*var calendar = new Vue({
-    el: "#calendar",
-    data: {
-        message: "CAL"
-    }
-});*/
-
 export default {
   props: ["title", "items", "csrf"],
 };

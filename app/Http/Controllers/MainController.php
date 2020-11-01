@@ -52,34 +52,4 @@ class MainController extends Controller
 
         return view('start')->with($this->message);
     }
-
-    public function auth(Request $request, \Google_Client $client)
-    {
-        $this->client = $client;
-
-        if (!empty($request->input('authCode'))) {
-            $authCode = $request->input('authCode');
-            $accessToken = $this->client->fetchAccessTokenWithAuthCode($authCode);
-
-            $this->client->setAccessToken($accessToken);
-
-
-            $tokenPath = base_path() . '/token.json';
-
-            if (array_key_exists('error', $accessToken)) {
-                throw new \Exception(join(', ', $accessToken));
-            }
-
-            if (!file_exists(dirname($tokenPath))) {
-                mkdir(dirname($tokenPath), 0700, true);
-            }
-            file_put_contents($tokenPath, json_encode($this->client->getAccessToken()));
-
-            return redirect('/');
-        } else {
-
-            $authUrl = $this->client->createAuthUrl();
-            return view('auth')->with('authUrl', $authUrl);
-        }
-    }
 }

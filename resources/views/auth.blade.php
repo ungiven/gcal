@@ -34,7 +34,7 @@
     <div id="main">
         <form method="post">
             @csrf
-        <input type="text" name="authkey" id="authkey" placeholder="Enter auth key here">
+        <input type="text" name="authcode" id="authkey" placeholder="Enter auth key here">
         <input type="submit" />
         </form>
     </div>
